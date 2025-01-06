@@ -1,76 +1,78 @@
 ---
-import { join } from "node:path";
-import { AstroFont } from "astro-font";
+import { join } from 'node:path';
+import { AstroFont } from 'astro-font';
 
 const appDir = process.cwd();
-const getFontPath = (name: string) => join(appDir, "public", "fonts", name);
+const getFontPath = (fontName: string) => join(appDir, 'public', 'fonts', fontName);
 ---
 
+<!-- https://www.npmjs.com/package/astro-font -->
 <AstroFont
   config={[
     {
-      name: "Outfit",
-      display: "swap",
-      selector: ".outfit",
-      fallback: "sans-serif",
+      name: 'Outfit',
       src: [
         {
-          style: "normal",
-          path: getFontPath("outfit.ttf"),
+          style: 'normal',
+          path: getFontPath('outfit.ttf'),
         },
       ],
+      preload: true,
+      display: 'swap',
+      selector: '.outfit',
+      fallback: 'sans-serif',
     },
     {
-      display: "swap",
-      name: "Poppins",
-      selector: ".poppins",
-      fallback: "sans-serif",
+      name: 'Poppins',
       src: [
         {
-          preload: false,
-          style: "normal",
-          path: getFontPath("poppins.ttf"),
+          style: 'normal',
+          path: getFontPath('poppins.ttf'),
         },
       ],
+      preload: false,
+      display: 'swap',
+      selector: '.poppins',
+      fallback: 'sans-serif',
     },
     {
-      display: "swap",
-      name: "Righteous",
-      fallback: "sans-serif",
-      selector: ".righteous",
+      name: 'Righteous',
       src: [
         {
-          preload: false,
-          style: "normal",
-          path: getFontPath("righteous.ttf"),
+          style: 'normal',
+          path: getFontPath('righteous.ttf'),
         },
       ],
+      preload: false,
+      display: 'swap',
+      selector: '.righteous',
+      fallback: 'sans-serif',
     },
     {
-      display: "swap",
-      name: "Sanchez",
-      fallback: "serif",
-      selector: ".sanchez",
+      name: 'Sanchez',
       src: [
         {
-          preload: false,
-          style: "normal",
-          path: getFontPath("sanchez.ttf"),
+          style: 'normal',
+          path: getFontPath('sanchez.ttf'),
         },
       ],
+      preload: false,
+      display: 'swap',
+      selector: '.sanchez',
+      fallback: 'serif',
     },
     {
-      display: "swap",
-      fallback: "serif",
-      selector: ".dm-serif",
-      name: "DM Serif Text",
+      name: 'DM Serif Text',
       src: [
         {
-          preload: false,
-          style: "normal",
-          path: getFontPath("dm-serif.ttf"),
+          style: 'normal',
+          path: getFontPath('dm-serif.ttf'),
         },
       ],
+      preload: false,
+      display: 'swap',
+      selector: '.dm-serif',
+      fallback: 'serif',
     },
   ]}
 />

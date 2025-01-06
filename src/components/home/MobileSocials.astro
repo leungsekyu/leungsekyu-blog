@@ -2,30 +2,30 @@
 const socials = [
   {
     name: 'GitHub',
-    url: 'https://github.com/eliancodes',
-    icon: 'i-uil-github',
+    url: 'https://github.com/leungsekyu',
+    icon: 'i-grommet-icons-github',
   },
   {
-    name: 'Twitter',
-    url: 'https://www.twitter.com/eliancodes',
-    icon: 'i-uil-twitter',
+    name: 'X',
+    url: 'https://x.com/leungsekyu',
+    icon: 'i-grommet-icons-x',
   },
   {
     name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/elianvancutsem',
-    icon: 'i-uil-linkedin',
+    url: 'https://www.linkedin.com/in/leungsekyu/',
+    icon: 'i-grommet-icons-linkedin',
   },
 ];
 ---
 
-<section class='md:hidden'>
-  <h2 class='hidden'>Socials section</h2>
-  <ul class='flex justify-between'>
+<section class="md:hidden">
+  <h2 class="hidden">个人社交媒体</h2>
+  <ul class="flex justify-between">
     {
-      socials.map((item) => (
-        <li class='bg-white px-4 py-2 text-green border-black border-2 rounded card-shadow'>
-          <a href={item.url} target='_blank' title={`Go to ${item.name}`}>
-            <div class:list={[item.icon, 'p-6']} />
+      socials.map((social) => (
+        <li class="bg-white px-4 py-2 text-green border-black border-2 rounded card-shadow">
+          <a href={social.url} target="_blank" title={`转到 ${social.name}`}>
+            <div class:list={[social.icon, 'p-6']} />
           </a>
         </li>
       ))

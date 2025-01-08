@@ -1,74 +1,17 @@
 ---
-export interface Props {
-  backToTop?: boolean;
-}
-
-const { backToTop = false } = Astro.props;
+import BackToTop from './BtnBackToTop.astro';
 ---
 
-{
-  backToTop && (
-    <button
-      class:list={[
-        backToTop ? `backToTop` : null,
-        'transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow',
-      ]}
-    >
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        viewBox='0 0 24 24'
-        height='100%'
-        width='100%'
-        stroke-width='1.5'
-        stroke='currentColor'
-      >
-        <path
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          d='m4.5 15.75 7.5-7.5 7.5 7.5'
-        />
-      </svg>
-    </button>
-  )
-}
+<BackToTop btnBackToTop={true} />
 
-<footer class='bg-black text-white p-6'>
-  <h2 class='hidden'>Footer</h2>
-  <p class='outfit'>
-    Brutal theme for Astro - by <a
-      href='https://www.elian.codes/'
-      target='_blank'
-      class='text-blue'>ElianCodes</a
-    >
+<footer class="p-6 bg-black text-white">
+  <h2 class="hidden">页脚</h2>
+  <p class="text-center text-lg outfit">©️ leungsekyu 2024</p>
+  <p class="mt-2 text-center text-base outfit">
+    使用 <a href="https://www.elian.codes/" target="_blank" class="text-blue">ElianCodes</a> 的 <a
+      href="https://astro.build/themes/details/brutal/"
+      target="_blank"
+      class="text-blue">Astro 模板</a
+    > 创建 🩵
   </p>
 </footer>
-
-<style>
-  .backToTop.active {
-    opacity: 1;
-  }
-</style>
-
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const backToTop = document.querySelector('.backToTop');
-
-    const toggleBackToTopButton = () => {
-      if (window.scrollY > 250) {
-        backToTop?.classList.add('active');
-      } else {
-        backToTop?.classList.remove('active');
-      }
-    };
-
-    backToTop?.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    });
-
-    window.addEventListener('scroll', toggleBackToTopButton);
-  });
-</script>

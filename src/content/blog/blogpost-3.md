@@ -7,7 +7,7 @@ tags:
   - CSS
   - Astro
   - Vite
-imgUrl: '../../assets/astro.jpeg'
+imgUrl: '../../assets/astro/astro.jpeg'
 ---
 
 ## Deorum petiit ignis

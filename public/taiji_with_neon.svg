@@ -1,12 +1,12 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 100 100"
-  width="10"
-  height="10"
+  viewBox="-10 -10 120 120"
+  width="300"
+  height="300"
 >
   <defs>
     <filter id="neon-glow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+      <feGaussianBlur stdDeviation="3" result="coloredBlur" />
       <feMerge>
         <feMergeNode in="coloredBlur" />
         <feMergeNode in="SourceGraphic" />

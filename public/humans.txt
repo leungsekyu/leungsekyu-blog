@@ -19,3 +19,4 @@ Elian Van Cutsem
 Astro Brutal 模板
 
 - 网站: https://astro.build/themes/details/brutal/
+- GitHub：https://github.com/ElianCodes/brutal

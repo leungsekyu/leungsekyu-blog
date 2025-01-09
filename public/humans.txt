@@ -1,6 +1,21 @@
-## Brutal Theme ##
+## 网站信息 ##
 
-All development & Content by Elian Van Cutsem
+本网站由 leungsekyu 使用 Astro Brutal 模板构建
 
-- email: hello@elian.codes
-- website: www.elian.codes
+leungsekyu
+
+- 网站: leungsekyu.com
+- 邮箱: leungskeyu@qq.com
+
+--- 分割线 ---
+
+Astro Brutal 模板由 Elian Van Cutsem 设计
+
+Elian Van Cutsem
+
+- 网站: https://www.elian.codes/
+- 邮箱: hello@elian.codes
+
+Astro Brutal 模板
+
+- 网站: https://astro.build/themes/details/brutal/

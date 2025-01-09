@@ -1,30 +1,30 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import Layout from '@layouts/Default.astro';
+
+import DefaultLayout from '@layouts/Default.astro';
 import BlogList from '@components/blog/BlogList.astro';
 import { Button } from '@eliancodes/brutal-ui';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection('blog').then((collection) =>
-    collection.reverse()
-  );
+  const collection = await getCollection('blog');
+  const allPosts = collection.reverse();
 
-  const tags: string[] = [];
+  const allTags: string[] = [];
 
-  allPosts.forEach((post) => {
-    post.data.tags.forEach((tag) => {
-      tags.push(tag.toLowerCase());
+  allPosts.forEach((post: CollectionEntry<'blog'>) => {
+    post.data.tags.forEach((tag: string) => {
+      allTags.push(tag);
     });
   });
 
-  return Array.from(new Set(tags)).map((tag) => {
+  return Array.from(new Set(allTags)).map((currentTag) => {
     return {
-      params: { tag },
+      params: { tag: currentTag.toLowerCase() },
       props: {
-        tag,
-        blogposts: allPosts.filter((post) =>
-          post.data.tags.map((tag) => tag.toLowerCase()).includes(tag)
+        tag: currentTag,
+        filteredBlogPosts: allPosts.filter((post: CollectionEntry<'blog'>) =>
+          post.data.tags.map((tag: string) => tag.toLowerCase()).includes(currentTag.toLowerCase())
         ),
       },
     };
@@ -33,21 +33,17 @@ export async function getStaticPaths() {
 
 interface Props {
   tag: string;
-  blogposts: CollectionEntry<'blog'>[];
+  filteredBlogPosts: CollectionEntry<'blog'>[];
 }
 
-const { tag, blogposts } = Astro.props;
+const { tag, filteredBlogPosts } = Astro.props;
 ---
 
-<Layout
-  title={`Blog: ${tag}`}
-  description={`Brutal Blog | All posts tagged with ${tag}`}
-  pageTitle={`Brutal Blog | Blogposts tagged with ${tag}`}
->
-  <main class='p-6 bg-purple grid gap-4'>
+<DefaultLayout title={`博客 | ${tag}`} description={`包含 ${tag} 标签的所有博客文章`} }>
+  <main class="grid gap-4 p-6 bg-purple">
     <div>
-      <Button href='/blog/'>&larr; Back to blog</Button>
+      <Button href="/blog/">&larr; 返回博客</Button>
     </div>
-    <BlogList posts={blogposts} />
+    <BlogList posts={filteredBlogPosts} />
   </main>
-</Layout>
+</DefaultLayout>

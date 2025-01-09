@@ -14,6 +14,10 @@ export default defineConfig({
           const icons = await import("@iconify-json/grommet-icons/icons.json");
           return icons.default;
         },
+        simple: async () => {
+          const icons = await import("@iconify-json/simple-icons/icons.json");
+          return icons.default;
+        },
       },
     }),
     presetTypography(),

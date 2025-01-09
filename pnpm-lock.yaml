@@ -36,6 +36,9 @@ importers:
       '@iconify-json/grommet-icons':
         specifier: ^1.2.1
         version: 1.2.1
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.19
+        version: 1.2.19
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.0
@@ -665,6 +668,9 @@ packages:
 
   '@iconify-json/grommet-icons@1.2.1':
     resolution: {integrity: sha512-x5RT+J4QIUUsgLobgBXjaKp+gpjIy1fMyBSdbhU5nv8F5it3tkmqj2/U2jt8KRgjVnlIgvKqKsGVll48flMnew==}
+
+  '@iconify-json/simple-icons@1.2.19':
+    resolution: {integrity: sha512-5ntmhLBUEKiakX3quPPXft+WfXIVfDINzTm3djZzzewah9ACxsCVaxoa4QVxlW8PMoF8jndXOqyHYZGCxwxoZw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4351,6 +4357,10 @@ snapshots:
   '@humanwhocodes/object-schema@2.0.1': {}
 
   '@iconify-json/grommet-icons@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/simple-icons@1.2.19':
     dependencies:
       '@iconify/types': 2.0.0
 

@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@iconify-json/grommet-icons": "^1.2.1",
+    "@iconify-json/simple-icons": "^1.2.19",
     "@resvg/resvg-js": "^2.6.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@unocss/reset": "^0.57.7",

@@ -7,7 +7,7 @@ tags:
   - 前端共学营
   - Sui
   - Move
-imgUrl: "../../assets/HOH_前端共学营_20241230.jpg"
+imgUrl: "../../assets/hoh_frontend_20241230.jpg"
 description: Sui Move 学习笔记
 ---
 

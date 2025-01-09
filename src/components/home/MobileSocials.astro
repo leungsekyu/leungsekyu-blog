@@ -5,16 +5,22 @@ const socials = [
     url: 'https://github.com/leungsekyu',
     icon: 'i-grommet-icons-github',
   },
+  // {
+  //   name: 'LinkedIn',
+  //   url: 'https://www.linkedin.com/in/leungsekyu/',
+  //   icon: 'i-grommet-icons-linkedin',
+  // },
   {
     name: 'X',
     url: 'https://x.com/leungsekyu',
     icon: 'i-grommet-icons-x',
   },
   {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/leungsekyu/',
-    icon: 'i-grommet-icons-linkedin',
+    name: '小红书',
+    url: 'https://www.xiaohongshu.com/user/profile/64b3094b000000000b015d2b',
+    icon: 'i-simple-icons-xiaohongshu',
   },
+  // { name: 'RSS', url: '/feed.xml', icon: 'i-grommet-icons-rss' },
 ];
 ---
 
@@ -25,7 +31,7 @@ const socials = [
       socials.map((social) => (
         <li class="bg-white px-4 py-2 text-green border-black border-2 rounded card-shadow">
           <a href={social.url} target="_blank" title={`转到 ${social.name}`}>
-            <div class:list={[social.icon, 'p-6']} />
+            <div class:list={[social.icon, 'p-6', social.name === '小红书' ? 'scale-125' : '']} />
           </a>
         </li>
       ))

@@ -5,7 +5,13 @@ import { desktopNavItems as navItems } from '@utils/nav-items';
 {
   navItems.map((item) => (
     <li>
-      <a class="hover:text-green text-lg font-medium transition-all duration-150 ease-in-out hover:underline" href={item.url} title={`${item.name}`}>
+      <a
+        class="hover:text-green text-lg font-medium transition-all duration-150 ease-in-out hover:underline"
+        href={item.url}
+        title={`${item.name}`}
+        aria-label={`访问 ${item.name}`}
+        rel="noopener noreferrer"
+      >
         {item.name}
       </a>
     </li>

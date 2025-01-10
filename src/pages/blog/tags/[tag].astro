@@ -2,9 +2,9 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
-import DefaultLayout from '@layouts/Default.astro';
-import BlogList from '@components/blog/BlogList.astro';
+import DefaultLayout from '@layouts/DefaultLayout.astro';
 import { Button } from '@eliancodes/brutal-ui';
+import BlogList from '@components/blog/BlogList.astro';
 
 export async function getStaticPaths() {
   const collection = await getCollection('blog');
@@ -40,7 +40,7 @@ const { tag, filteredBlogPosts } = Astro.props;
 ---
 
 <DefaultLayout title={`博客 | ${tag}`} description={`包含 ${tag} 标签的所有博客文章`} }>
-  <main class="grid gap-4 p-6 bg-purple">
+  <main class="grid gap-4 p-6 pb-9 bg-purple">
     <div>
       <Button href="/blog/">&larr; 返回博客</Button>
     </div>

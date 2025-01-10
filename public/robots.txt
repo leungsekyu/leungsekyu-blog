@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Allow: /
 Host: https://leungsekyu.com/
 Sitemap: https://leungsekyu.com/sitemap-index.xml

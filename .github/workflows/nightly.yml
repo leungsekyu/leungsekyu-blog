@@ -1,41 +1,61 @@
-name: nightly
+# ============================================================================
+# Astro 每日更新工作流
+# 每晚自动更新 Astro 及其依赖的工作流
+# ============================================================================
 
+name: Astro 每日更新
+
+# 触发配置
+# ----------------------------------------------------------------------------
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *" # 每天午夜执行
 
+# 环境变量
+# ----------------------------------------------------------------------------
+env:
+  NODE_OPTIONS: "--max_old_space_size=4096"
+
+# 任务配置
+# ----------------------------------------------------------------------------
 jobs:
   upgrade:
+    name: 更新 Astro
     runs-on: ubuntu-latest
-    env:
-      NODE_OPTIONS: '--max_old_space_size=4096'
+
     steps:
-      - name: Checkout
+      # 1. 环境准备
+      # ------------------------------------------------------------------------
+      - name: 下载当前项目的源代码
         uses: actions/checkout@v3
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Setup Node
+      - name: 配置 Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: pnpm
 
-      - name: Install dependencies
+      - name: 配置 PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      # 2. 依赖安装和更新
+      # ------------------------------------------------------------------------
+      - name: 安装依赖
         run: pnpm install
 
-      - name: Upgrade Astro
+      - name: 更新 Astro
         run: pnpm dlx @astrojs/upgrade --yes
 
-      - name: PR Changes
+      # 3. 创建更新 PR
+      # ------------------------------------------------------------------------
+      - name: 创建拉取请求
         uses: peter-evans/create-pull-request@v4
         with:
           branch: ci/update-astro
-          commit-message: 'ci: update Astro'
-          assignees: eliancodes
-          title: 'ci: update Astro'
-          body: Update Astro and packages to latest version
+          commit-message: "ci: 更新 Astro"
+          title: "ci: 更新 Astro"
+          body: 更新 Astro 和相关依赖包到最新版本
+          assignees: leungsekyu
           labels: ci

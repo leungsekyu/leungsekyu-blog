@@ -1,6 +1,5 @@
 ---
 import LocalFont from '../generic/LocalFont.astro';
-import { ClientRouter } from 'astro:transitions';
 
 // 定义组件接收的属性类型
 interface Props {
@@ -9,53 +8,54 @@ interface Props {
   ogImage?: URL; // 可选的 Open Graph 图片 URL
 }
 
-// 获取当前页面的规范 URL
+// 获取当前页面的规范 URL（Astro.site 从 astro.config.ts 中获取）
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // 如果没有提供 ogImage，设置默认的 OG 图片
 if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL('/v1/generate/og/default.png', Astro.url);
+  Astro.props.ogImage = new URL('/v1/generate/og/default.png', Astro.site);
 }
 
 const { title, description, ogImage } = Astro.props;
 ---
 
 <head>
+  <!-- 字体 -->
   <LocalFont />
 
   <!-- 基本元数据 -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="generator" content={Astro.generator} />
-  <title>leungsekyu | {title}</title>
 
-  <!-- RSS Feed -->
-  <link rel="alternate" href="/feed.xml" type="application/rss+xml" />
+  <!-- 浏览器标签 -->
+  <link rel="icon" type="image/svg" href="/favicon.svg" />
+  <title>leungsekyu | {title}</title>
 
   <!-- SEO 元数据 -->
   <meta name="title" content={`leungsekyu | ${title}`} />
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
 
+  <!-- 站点地图 -->
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <!-- RSS 订阅 -->
+  <link rel="alternate" type="application/rss+xml" title="leungsekyu 的个人博客" href={new URL('rss.xml', Astro.site)} />
+
   <!-- Open Graph / Facebook 元数据 -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonicalURL} />
 
   <!-- Twitter 元数据 -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={canonicalURL} />
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={ogImage} />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg" href="/favicon.svg" />
-
-  <!-- Astro 客户端路由 -->
-  <ClientRouter />
+  <meta property="twitter:url" content={canonicalURL} />
 
   <slot />
 </head>

@@ -5,15 +5,15 @@ export async function GET(context) {
   const blog = await getCollection("blog");
 
   return rss({
+    stylesheet: "/rss/pretty-feed-v3.xsl",
     title: "leungsekyu",
     description: "leungsekyu 的个人博客",
-    stylesheet: false,
     site: context.site,
     items: blog.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      link: `/blog/${post.slug}/`,
+      link: `/blog/${post.id}/`,
     })),
     customData: "<language>zh-cn</language>",
   });

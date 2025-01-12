@@ -21,11 +21,11 @@ const socials = [
         class="hover:text-green transition-all duration-150 ease-in-out"
         href={item.url}
         target="_blank"
+        rel="noopener noreferrer"
         title={item.name === 'RSS' ? '本站RSS源' : `我的${item.name}`}
         aria-label={item.name === 'RSS' ? '订阅本站RSS源' : `访问我的${item.name}`}
-        rel="noopener noreferrer"
       >
-        <div class:list={[item.icon, item.name === '小红书' ? '-mt-2 h-10 w-10' : 'h-6 w-6']} />
+        <div class:list={[item.icon, item.name === '小红书' ? '-mt-2 p-5' : 'p-3']} />
       </a>
     </li>
   ))

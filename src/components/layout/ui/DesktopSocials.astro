@@ -1,0 +1,32 @@
+---
+const socials = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/leungsekyu',
+    icon: 'i-grommet-icons-github',
+  },
+  {
+    name: '小红书',
+    url: 'https://www.xiaohongshu.com/user/profile/64b3094b000000000b015d2b',
+    icon: 'i-simple-icons-xiaohongshu',
+  },
+  { name: 'RSS', url: '/rss.xml', icon: 'i-grommet-icons-rss' },
+];
+---
+
+{
+  socials.map((item) => (
+    <li>
+      <a
+        class="hover:text-green transition-all duration-150 ease-in-out"
+        href={item.url}
+        target="_blank"
+        title={item.name === 'RSS' ? '本站RSS源' : `我的${item.name}`}
+        aria-label={item.name === 'RSS' ? '订阅本站RSS源' : `访问我的${item.name}`}
+        rel="noopener noreferrer"
+      >
+        <div class:list={[item.icon, item.name === '小红书' ? '-mt-2 h-10 w-10' : 'h-6 w-6']} />
+      </a>
+    </li>
+  ))
+}

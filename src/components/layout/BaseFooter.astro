@@ -1,17 +1,27 @@
 ---
-import BackToTop from './BtnBackToTop.astro';
+import BtnBackToTop from './widgets/BtnBackToTop.astro';
 ---
 
-<BackToTop btnBackToTop={true} />
+<BtnBackToTop show={true} />
 
-<footer class="p-6 bg-black text-white">
+<footer class="bg-black p-6 text-white">
   <h2 class="hidden">页脚</h2>
-  <p class="text-center text-lg outfit">©️ leungsekyu 2024</p>
-  <p class="mt-2 text-center text-base outfit">
-    使用 <a href="https://www.elian.codes/" target="_blank" class="text-blue">ElianCodes</a> 的 <a
+  <p class="outfit text-center text-lg">©️ leungsekyu 2024</p>
+  <p class="outfit mt-2 text-center">
+    使用 <a
+      class="text-blue"
+      href="https://www.elian.codes/"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Elian Van Cutsem 的个人网站"
+      aria-label="访问 Elian Van Cutsem 的个人网站">ElianCodes</a
+    > 的 <a
+      class="text-blue"
       href="https://astro.build/themes/details/brutal/"
       target="_blank"
-      class="text-blue">Astro 模板</a
+      rel="noopener noreferrer"
+      title="Astro Brutal 模板的网页"
+      aria-label="访问 Astro Brutal 模板的网页">Astro 模板</a
     > 创建 🩵
   </p>
 </footer>

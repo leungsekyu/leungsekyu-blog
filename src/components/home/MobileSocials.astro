@@ -5,11 +5,6 @@ const socials = [
     url: 'https://github.com/leungsekyu',
     icon: 'i-grommet-icons-github',
   },
-  // {
-  //   name: 'LinkedIn',
-  //   url: 'https://www.linkedin.com/in/leungsekyu/',
-  //   icon: 'i-grommet-icons-linkedin',
-  // },
   {
     name: 'X',
     url: 'https://x.com/leungsekyu',
@@ -20,18 +15,17 @@ const socials = [
     url: 'https://www.xiaohongshu.com/user/profile/64b3094b000000000b015d2b',
     icon: 'i-simple-icons-xiaohongshu',
   },
-  // { name: 'RSS', url: '/feed.xml', icon: 'i-grommet-icons-rss' },
 ];
 ---
 
 <section class="pb-3 md:hidden">
-  <h2 class="hidden">个人社交媒体</h2>
+  <h2 class="hidden">移动端个人社交媒体栏</h2>
   <ul class="flex justify-between">
     {
       socials.map((social) => (
-        <li class="bg-white px-4 py-2 text-green border-black border-2 rounded card-shadow">
-          <a href={social.url} target="_blank" title={`转到 ${social.name}`}>
-            <div class:list={[social.icon, 'p-6', social.name === '小红书' ? 'scale-125' : '']} />
+        <li class="card-shadow text-green rounded border-2 border-black bg-white px-4 py-2">
+          <a href={social.url} target="_blank" rel="noopener noreferrer" title={`我的${social.name}`} aria-label={`访问我的${social.name}`}>
+            <div class:list={[social.icon, 'p-6', social.name === '小红书' ? 'scale-125' : '']} role="img" aria-label={social.name} />
           </a>
         </li>
       ))

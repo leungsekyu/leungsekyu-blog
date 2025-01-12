@@ -1,0 +1,13 @@
+---
+import { mobileNavItems as navItems } from '@utils/nav-items';
+---
+
+{
+  navItems.map((item) => (
+    <li>
+      <a href={item.url} class="text-lg" aria-label={`访问 ${item.name}`}>
+        {item.name}
+      </a>
+    </li>
+  ))
+}

@@ -1,14 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
-
 import DefaultLayout from '@layouts/DefaultLayout.astro';
 import BlogList from '@components/blog/BlogList.astro';
 
-const posts = await getCollection('blog').then((collection) => collection.reverse());
+const posts = await getCollection('blog');
 ---
 
 <DefaultLayout title="博客" description="leungsekyu 的所有博客文章">
-  <main class="p-6 bg-green">
+  <main class="bg-green p-6">
     <BlogList posts={posts} />
   </main>
 </DefaultLayout>

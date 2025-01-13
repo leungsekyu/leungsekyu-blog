@@ -11,7 +11,7 @@ const { headings } = Astro.props;
 ---
 
 <aside>
-  <nav class="hidden lg:block sticky top-6">
+  <nav class="sticky top-6 hidden lg:block">
     <ul>
       {
         headings.map((heading) => (
@@ -20,15 +20,7 @@ const { headings } = Astro.props;
               <span class="inline-block w-4" />
             ))}
 
-            <a
-              class="
-                text-dark
-                poppins
-                hover:text-stone
-                transition-all duration-150 ease-in-out
-              "
-              href={`#${heading.slug}`}
-            >
+            <a class="text-dark poppins hover:text-stone transition-all duration-150 ease-in-out" href={`#${heading.slug}`}>
               {heading.text}
             </a>
           </li>

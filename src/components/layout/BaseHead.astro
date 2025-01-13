@@ -1,22 +1,22 @@
 ---
-import LocalFont from '../generic/LocalFont.astro';
+import LocalFont from '../generic/LocalFont.astro'
 
 // 定义组件接收的属性类型
 interface Props {
-  title: string;
-  description: string;
-  ogImage?: URL; // 可选的 Open Graph 图片 URL
+  title: string
+  description: string
+  ogImage?: URL // 可选的 Open Graph 图片 URL
 }
 
 // 获取当前页面的规范 URL（Astro.site 从 astro.config.ts 中获取）
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 // 如果没有提供 ogImage，设置默认的 OG 图片
 if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL('/v1/generate/og/default.png', Astro.site);
+  Astro.props.ogImage = new URL('/v1/generate/og/default.png', Astro.site)
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage } = Astro.props
 ---
 
 <head>
@@ -30,7 +30,7 @@ const { title, description, ogImage } = Astro.props;
 
   <!-- 浏览器标签 -->
   <link rel="icon" type="image/svg" href="/favicon.svg" />
-  <title>leungsekyu | {title}</title>
+  <title>{title === '主页' ? 'leungsekyu' : `leungsekyu | ${title}`}</title>
 
   <!-- SEO 元数据 -->
   <meta name="title" content={`leungsekyu | ${title}`} />

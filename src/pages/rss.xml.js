@@ -5,7 +5,7 @@ export async function GET(context) {
   const blog = await getCollection('blog')
 
   return rss({
-    // stylesheet: "/rss/pretty-feed-v3.xsl",
+    stylesheet: '/rss/pretty-feed-v3.xsl',
     title: 'leungsekyu',
     description: 'leungsekyu 的个人博客',
     site: context.site,

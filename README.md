@@ -16,3 +16,5 @@
 ### prettier-plugin-tailwindcss
 
 [Sorting classes in function calls](https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file#sorting-classes-in-function-calls)
+
+在 public 文件夹新增了个人头像（可能会影响访问速度）

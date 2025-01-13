@@ -2,8 +2,9 @@
 
 ## 重要
 
-- 清空提交
-- 研究博客的排序
+- 整理 BlogPostLayout
+- 整理 BlogContent
+- 整理 README
 
 ## 次要
 

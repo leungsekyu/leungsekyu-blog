@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import { Card } from '@eliancodes/brutal-ui';
+import { Button } from '@eliancodes/brutal-ui';
+import BlogList from '../blog/BlogList.astro';
+
+const posts = await getCollection('blog');
+---
+
+<section class="mt-8">
+  <h2 class="hidden">最近更新的文章</h2>
+  <Card>
+    <div class="flex items-start justify-between">
+      <h2 class="dm-serif mb-8 text-2xl md:text-4xl lg:text-6xl">最近更新</h2>
+      <div class="hidden md:block">
+        <Button href="/blog/">进入博客 &rarr;</Button>
+      </div>
+      <div class="block md:hidden">
+        <Button href="/blog/">进入博客</Button>
+      </div>
+    </div>
+    <BlogList posts={posts} count={3} />
+  </Card>
+</section>

@@ -5,6 +5,10 @@
 - 整理 BlogPostLayout
 - 整理 BlogContent
 - 整理 README
+- 移动端 RSS
+
+提高网站性能及可访问性
+https://pagespeed.web.dev/
 
 ## 次要
 
@@ -23,4 +27,4 @@
 ## 错误
 
 - open graph 图片的默认头像没有显示
-原因：需要二次部署才显示
+  原因：需要二次部署才显示

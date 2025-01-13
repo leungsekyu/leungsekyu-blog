@@ -30,3 +30,6 @@ https://pagespeed.web.dev/
   原因：需要二次部署才显示
 
 - RSS 无内容
+- RSS 页没有浏览器标题
+
+- 移动端浏览器不显示 favicon

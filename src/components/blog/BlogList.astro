@@ -7,11 +7,16 @@ interface Props {
 }
 
 const { posts } = Astro.props;
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = new Date(a.data.pubDate).getTime();
+  const dateB = new Date(b.data.pubDate).getTime();
+  return dateB - dateA;
+});
 ---
 
 <ul class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
   {
-    posts.map((post) => {
+    sortedPosts.map((post) => {
       return (
         <li>
           <BlogSummaryCard post={post} />

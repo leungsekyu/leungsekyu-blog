@@ -3,31 +3,43 @@ import type { APIRoute } from 'astro'
 import satori from 'satori'
 import { html as toReactElement } from 'satori-html'
 
-const fontFile = await fetch(
+import { join } from 'node:path'
+import { readFile } from 'fs/promises'
+
+const appDir = process.cwd()
+const getFontPath = (fontName: string) =>
+  join(appDir, 'public', 'fonts', fontName)
+
+const fontFileSCRegular = getFontPath('NotoSansSC-Regular.ttf')
+const fontDataSCRegular: ArrayBuffer = await readFile(fontFileSCRegular)
+
+const fontFileSCBold = getFontPath('NotoSansSC-Bold.ttf')
+const fontDataSCBold: ArrayBuffer = await readFile(fontFileSCBold)
+
+const fontFileLatin = await fetch(
   'https://og-playground.vercel.app/inter-latin-ext-700-normal.woff',
 )
-
-const fontData: ArrayBuffer = await fontFile.arrayBuffer()
+const fontDataLatin: ArrayBuffer = await fontFileLatin.arrayBuffer()
 
 const height = 630
 const width = 1200
 
 export const GET: APIRoute = async () => {
-  const link = 'https://www.leungsekyu.com'
+  const link = 'https://leungsekyu.com'
+  const avatar = 'http://localhost:4321/avatar/leungsekyu.jpg'
   const html = toReactElement(`
-  <div style="background-color: white; display: flex; flex-direction: column; height: 100%; padding: 3rem; width: 100%">
-    <div style="display:flex; height: 100%; width: 100%; background-color: white; border: 6px solid black; border-radius: 0.5rem; padding: 2rem; filter: drop-shadow(6px 6px 0 rgb(0 0 0 / 1));">
-      <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; filter: drop-shadow()">
-        <div style="display: flex; flex-direction: column; gap: 0.75rem;">  
-          <p style="font-size: 48px;">Brutal</p>
-          <p style="font-size: 38px;">A theme for Astro</p>
-          <p style="font-size: 38px;">Brought to you by Elian</p>
+  <div class="bg-white flex flex-col h-full p-12 w-full">
+    <div class="flex h-full w-full bg-white border-[6px] border-black rounded-lg p-8 shadow-lg">
+      <div class="flex flex-col w-full">
+        <div class="flex flex-col">
+          <p class="text-5xl pb-5">嗨！</p>
+          <p class="text-4xl pb-5">我是 leungsekyu</p>
+          <p class="text-4xl">欢迎来到我的个人博客 ☃</p>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: -2rem;">
-          <p style="font-size: 32px">${link}</p>
-          <img src="https://www.leungsekyu.com/avatar/leungsekyu.jpg" width="200px" height="200px" style="border: 3px solid black; border-radius: 0.5rem;" />
+        <div class="flex justify-between items-baseline mt-[6px]">
+          <p class="text-3xl">${link}</p>
+          <img src="${avatar}" class="w-50 h-50 border-[3px] border-black rounded-lg" />
         </div>
-      </div>
     </div>
   </div>
   `)
@@ -36,8 +48,21 @@ export const GET: APIRoute = async () => {
     fonts: [
       {
         name: 'Inter Latin',
-        data: fontData,
+        data: fontDataLatin,
         style: 'normal',
+        weight: 700,
+      },
+      {
+        name: 'Noto Sans Simplified Chinese Bold',
+        data: fontDataSCBold,
+        style: 'normal',
+        weight: 700,
+      },
+      {
+        name: 'Noto Sans Simplified Chinese Regular',
+        data: fontDataSCRegular,
+        style: 'normal',
+        weight: 400,
       },
     ],
 

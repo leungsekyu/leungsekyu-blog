@@ -1,15 +1,15 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
 
-import MobileSocials from '@components/home/MobileSocials.astro';
-import About from '@components/home/About.astro';
-import RecentBlogPosts from '@components/home/RecentBlogPosts.astro';
+import MobileSocials from '@components/home/MobileSocials.astro'
+import About from '@components/home/About.astro'
+import RecentBlogPosts from '@components/home/RecentBlogPosts.astro'
 ---
 
 <DefaultLayout title="主页" pageTitle="主页" description="leungsekyu 的个人博客主页">
   <main class="bg-pink p-6">
     <MobileSocials />
     <About />
-    <RecentBlogPosts />
+    <RecentBlogPosts count={3} />
   </main>
 </DefaultLayout>

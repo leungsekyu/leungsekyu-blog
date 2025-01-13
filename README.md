@@ -2,6 +2,7 @@
 
 ## 重要
 
+- 研究微信 open graph 图片
 - 整理 BlogPostLayout
 - 整理 BlogContent
 - 整理 README

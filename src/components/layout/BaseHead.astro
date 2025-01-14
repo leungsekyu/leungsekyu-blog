@@ -51,8 +51,11 @@ const { title, description, ogImage } = Astro.props
   />
 
   <!-- Open Graph / 微信 元数据 -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="leungsekyu.com" />
-  <meta property="og:image" content="https://placehold.co/300/orange/white" />
+  <meta property="og:description" content="我的个人博客" />
+  <meta property="og:image" content="https://leungsekyu.netlify.app/avatar/leungsekyu.jpg" />
+  <meta property="og:url" content={canonicalURL} />
 
   <!-- Open Graph / Facebook 元数据 -->
   <!-- <meta property="og:type" content="website" />

@@ -1,19 +1,19 @@
 ---
-import BaseHead from '../components/layout/BaseHead.astro';
-import { ClientRouter } from 'astro:transitions';
-import BaseNavigation from '@components/layout/BaseNavigation.astro';
-import BaseFooter from '@components/layout/BaseFooter.astro';
-import '../styles/global.scss';
+import BaseHead from '../components/layout/BaseHead.astro'
+import { ClientRouter } from 'astro:transitions'
+import BaseNavigation from '@components/layout/BaseNavigation.astro'
+import BaseFooter from '@components/layout/BaseFooter.astro'
+import '../styles/global.scss'
 
 interface Props {
-  title: string;
-  description: string;
-  ogImage?: URL;
-  classList?: string;
-  pageTitle?: string;
+  title: string
+  description: string
+  ogImage?: URL
+  classList?: string
+  pageTitle?: string
 }
 
-const { title, description, ogImage, classList, pageTitle } = Astro.props;
+const { title, description, ogImage, classList, pageTitle } = Astro.props
 ---
 
 <!-- <html lang="zh" class="h-full"> -->
@@ -21,6 +21,7 @@ const { title, description, ogImage, classList, pageTitle } = Astro.props;
   <BaseHead title={title} description={description} ogImage={ogImage} />
 
   <body class:list={[classList]}>
+    <div style="display:none;"><img src="https://placehold.co/300/orange/white" alt="placeholder" /></div>
     <!-- Astro 客户端路由 -->
     <ClientRouter />
     <BaseNavigation {pageTitle} />

@@ -1,18 +1,18 @@
-import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import unocss from "unocss/astro";
+import { defineConfig } from 'astro/config'
+import sitemap from '@astrojs/sitemap'
+import unocss from 'unocss/astro'
 
 export default defineConfig({
-  site: "https://leungsekyu.com",
+  site: 'https://leungsekyu.netlify.app/',
   integrations: [sitemap(), unocss({ injectReset: true })],
   vite: {
     resolve: {
       alias: {
-        "@icons": "/public/icons",
+        '@icons': '/public/icons',
       },
     },
     optimizeDeps: {
-      exclude: ["@resvg/resvg-js"],
+      exclude: ['@resvg/resvg-js'],
     },
   },
-});
+})

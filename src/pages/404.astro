@@ -1,12 +1,12 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro';
 import Error404 from '@components/errors/Error404.astro';
-import RecentBlogPosts from '@components/home/RecentBlogPosts.astro';
+import RecentBlogPosts from '@components/blog/RecentBlogPosts.astro';
 ---
 
 <DefaultLayout title="页面未找到" pageTitle="页面未找到" description="404 错误：页面未找到">
   <main class="bg-blue px-6 py-8">
     <Error404 />
-    <RecentBlogPosts />
+    <RecentBlogPosts count={3} />
   </main>
 </DefaultLayout>

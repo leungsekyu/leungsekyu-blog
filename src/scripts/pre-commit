@@ -1,13 +1,29 @@
 #!/bin/bash
 
+# 重定向到 stderr 的函数
+log() {
+    echo "$1" >&2
+}
+
+log "Script starting..."
+log "hi 梁锡宇"
+
 # 获取当前日期并格式化
 currentDate=$(date +"%Y-%m-%d %H:%M")
+log "Current date: $currentDate"
 
 # 检查文件是否在暂存区内
 if git diff --cached --name-only | grep -q "src/content/blog/test.md"; then
+    log "File found in staging area"
     # 更新 updatedAt 字段
     sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" src/content/blog/test.md
+    log "Updated updatedAt field"
 
     # 将更新后的文件添加到暂存区
     git add src/content/blog/test.md
+    log "Added file back to staging area"
+else
+    log "File not found in staging area"
 fi
+
+log "Script completed"

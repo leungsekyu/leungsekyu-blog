@@ -5,11 +5,20 @@ import { Button } from '@eliancodes/brutal-ui'
 import BlogList from '../blog/BlogList.astro'
 
 interface Props {
-  count: number
+  count?: number
+  currentSlug?: string
 }
 
-const posts = await getCollection('blog')
-const { count } = Astro.props
+const { count, currentSlug } = Astro.props
+
+const posts = (
+  await getCollection('blog', ({ id }) => {
+    if (currentSlug) {
+      return id !== currentSlug
+    }
+    return true
+  })
+).slice(0, count)
 ---
 
 <section class="mt-8">

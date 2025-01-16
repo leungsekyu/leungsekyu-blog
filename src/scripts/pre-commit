@@ -17,26 +17,25 @@ staged_files=$(git diff --cached --name-only | grep "^src/content/blog/.*\.md$")
 for file in $staged_files; do
     log "正在处理文件: $file"
     
-    # 检查是否存在 publishedAt
+    # 检查是否存在 publishedAt，如果不存在则添加
     if ! grep -q "publishedAt:" "$file"; then
         log "未找到 publishedAt 字段，将在 title 后添加"
-        # 在 title 后添加 publishedAt
         sed -i '' '/^title:/a\
-publishedAt: '"$currentDate"'' "$file"
+publishedAt: '"$currentDate"'\
+' "$file"
         log "已添加 publishedAt 字段"
-    fi
-
-    # 检查是否存在 updatedAt
-    if grep -q "updatedAt:" "$file"; then
-        # 更新已存在的 updatedAt
-        sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" "$file"
-        log "已更新现有的 updatedAt 字段"
     else
-        # 在 publishedAt 后添加 updatedAt（而不是在 title 后）
-        sed -i '' '/^publishedAt:/a\
+        # 只有当存在 publishedAt 时才处理 updatedAt
+        if grep -q "updatedAt:" "$file"; then
+            sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" "$file"
+            log "已更新现有的 updatedAt 字段"
+        else
+            log "未找到 updatedAt 字段，将在 publishedAt 后添加"
+            sed -i '' '/^publishedAt:/a\
 updatedAt: '"$currentDate"'\
 ' "$file"
-        log "已添加新的 updatedAt 字段"
+            log "已添加 updatedAt 字段"
+        fi
     fi
 
     # 将更新后的文件添加回暂存区

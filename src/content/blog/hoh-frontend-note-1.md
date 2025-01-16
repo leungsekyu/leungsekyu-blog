@@ -1,6 +1,7 @@
 ---
 title: HOH｜前端共学营 01（2024年12月30日）
-pubDate: 2025-01-06 08:00
+createdAt: 2025-01-06 08:00
+publishedAt: 2025-01-06 08:00
 author: 'leungsekyu'
 tags:
   - HOH
@@ -11,16 +12,38 @@ imgUrl: '../../assets/hoh/hoh-frontend-01-20241230.jpg'
 description: Sui Move 学习笔记
 ---
 
-# 1级标题
+# Sui Move 101
 
-为什么没有内容？
+## 1. 新建项目
 
-## 2级标题
+```zsh
+sui move new filling
+```
 
-为什么没有内容？
+延伸链接：[Your First Sui dApp | Write a Move Package](https://docs.sui.io/guides/developer/first-app/write-package)
 
+## 2. 模板
+
+### 2.1 Sui 官网模板
+
+[Move Conventions | Body](https://docs.sui.io/concepts/sui-move-concepts/conventions#body)
+
+### 2.2 Anne 模板
+
+```move
+// === Dependencies ===
+// === Constants ===
+// === Error Codes ===
+// === Structs ===
+// === Event Structs ===
+// === Init ===
+// === Entry Functions ===
+// === Getter Functions ===
+```
+
+<!--
 正文
-_斜体_  
+_斜体_
 **粗体**
 
 - 列表
@@ -30,4 +53,4 @@ _斜体_
 console.log('hello world')
 ```
 
-> 引用
+> 引用 -->

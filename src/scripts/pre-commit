@@ -17,18 +17,15 @@ staged_files=$(git diff --cached --name-only | grep "^src/content/blog/.*\.md$")
 for file in $staged_files; do
     log "正在处理文件: $file"
     
-    log "调试: 文件状态信息："
+    log "调试: ⬇️ 文件状态信息 ⬇️"
     git status --porcelain "$file"
     
-    log "调试: 尝试获取文件历史..."
-    git --no-pager log -1 --pretty=format:"%H" -- "$file" || log "调试: 没有提交历史"
-    
     # 检查文件在 git 中的状态
-    file_status=$(git status --porcelain "$file" | cut -c1-2)
-    log "调试: 文件状态码 = [$file_status]"
+    file_status=$(git status --porcelain "$file" | cut -c1-2 | tr -d ' ')
+    log "调试: 文件状态码 = [ $file_status ]"
     
     # 如果文件状态是 A (新增) 或 ?? (未跟踪)，则视为首次提交
-    if [[ "$file_status" == "A " || "$file_status" == "??" ]]; then
+    if [[ "$file_status" == "A" || "$file_status" == "??" ]]; then
         is_first_commit=true
         log "调试: 这是首次提交 (基于文件状态)"
     else

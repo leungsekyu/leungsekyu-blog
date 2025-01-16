@@ -43,3 +43,4 @@ https://pagespeed.web.dev/
 
 - scrollbar 代码使用 SCSS + public/icons 图标重写
 - 发布日期 & 更新日期自动化
+  - 备忘：.git/hooks/pre-commit

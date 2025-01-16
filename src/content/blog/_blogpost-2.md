@@ -1,6 +1,7 @@
 ---
 title: Blogpost 2
-pubDate: 12/31/2022 12:05
+publishedAt: 12/31/2022 12:05
+updatedAt: 2025-01-17 06:04
 author: "Elian Van Cutsem"
 tags:
   - Astro

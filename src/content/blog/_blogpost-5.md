@@ -1,7 +1,8 @@
 ---
 title: Blogpost 5
 author: Elian Van Cutsem
-pubDate: 2023-02-19 18:37
+publishedAt: 2023-02-19 18:37
+updatedAt: 2025-01-17 06:04
 tags:
   - Astro
   - JavaScript

@@ -1,7 +1,8 @@
 ---
 title: Blogpost 3
 description: Lorem markdownum longo os thyrso telum, continet servat fetus nymphae, vox nocte sedesque, decimo. Omnia esse, quam sive; conplevit illis indestrictus admovit dedit sub quod protectus, impedit non.
-pubDate: 2023-02-14 23:49
+publishedAt: 2023-02-14 23:49
+updatedAt: 2025-01-17 06:04
 author: Elian Van Cutsem
 tags: 
   - CSS

@@ -7,6 +7,11 @@
 - 整理 BlogContent
 - 整理 README
 
+## 特色
+
+- 组件颜色随机变化
+- 颂钵 / 风铃 🎐
+
 提高网站性能及可访问性
 https://pagespeed.web.dev/
 
@@ -33,3 +38,8 @@ https://pagespeed.web.dev/
 - RSS 页没有浏览器标题
 
 - 移动端浏览器不显示 favicon
+
+改进：
+
+- scrollbar 代码使用 SCSS + public/icons 图标重写
+- 发布日期 & 更新日期自动化

@@ -5,25 +5,43 @@ log() {
     echo "$1" >&2
 }
 
-log "Script starting..."
-log "hi 梁锡宇"
+log "脚本开始执行..."
 
 # 获取当前日期并格式化
 currentDate=$(date +"%Y-%m-%d %H:%M")
-log "Current date: $currentDate"
+log "当前时间: $currentDate"
 
-# 检查文件是否在暂存区内
-if git diff --cached --name-only | grep -q "src/content/blog/test.md"; then
-    log "File found in staging area"
-    # 更新 updatedAt 字段
-    sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" src/content/blog/test.md
-    log "Updated updatedAt field"
+# 获取所有暂存区中的 md 文件
+staged_files=$(git diff --cached --name-only | grep "^src/content/blog/.*\.md$")
 
-    # 将更新后的文件添加到暂存区
-    git add src/content/blog/test.md
-    log "Added file back to staging area"
-else
-    log "File not found in staging area"
-fi
+for file in $staged_files; do
+    log "正在处理文件: $file"
+    
+    # 检查是否存在 publishedAt
+    if ! grep -q "publishedAt:" "$file"; then
+        log "未找到 publishedAt 字段，将在 title 后添加"
+        # 在 title 后添加 publishedAt
+        sed -i '' '/^title:/a\
+publishedAt: '"$currentDate"'' "$file"
+        log "已添加 publishedAt 字段"
+    fi
 
-log "Script completed"
+    # 检查是否存在 updatedAt
+    if grep -q "updatedAt:" "$file"; then
+        # 更新已存在的 updatedAt
+        sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" "$file"
+        log "已更新现有的 updatedAt 字段"
+    else
+        # 在 publishedAt 后添加 updatedAt（而不是在 title 后）
+        sed -i '' '/^publishedAt:/a\
+updatedAt: '"$currentDate"'\
+' "$file"
+        log "已添加新的 updatedAt 字段"
+    fi
+
+    # 将更新后的文件添加回暂存区
+    git add "$file"
+    log "已将 $file 添加回暂存区"
+done
+
+log "脚本执行完成"

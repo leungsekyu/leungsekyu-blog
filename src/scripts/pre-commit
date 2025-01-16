@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# 获取当前日期并格式化
+currentDate=$(date +"%Y-%m-%d %H:%M")
+
+# 更新 updatedAt 字段
+sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" src/content/blog/test.md
+
+# 将更新后的文件添加到暂存区
+git add src/content/blog/test.md

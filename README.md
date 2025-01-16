@@ -6,6 +6,7 @@
 - 整理 BlogPostLayout
 - 整理 BlogContent
 - 整理 README
+- 居中显示滚动条图标
 
 ## 特色
 

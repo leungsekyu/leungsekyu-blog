@@ -17,15 +17,46 @@ staged_files=$(git diff --cached --name-only | grep "^src/content/blog/.*\.md$")
 for file in $staged_files; do
     log "正在处理文件: $file"
     
-    # 检查是否存在 publishedAt，如果不存在则添加
-    if ! grep -q "publishedAt:" "$file"; then
-        log "未找到 publishedAt 字段，将在 title 后添加"
-        sed -i '' '/^title:/a\
+    log "调试: 文件状态信息："
+    git status --porcelain "$file"
+    
+    log "调试: 尝试获取文件历史..."
+    git --no-pager log -1 --pretty=format:"%H" -- "$file" || log "调试: 没有提交历史"
+    
+    # 检查文件在 git 中的状态
+    file_status=$(git status --porcelain "$file" | cut -c1-2)
+    log "调试: 文件状态码 = [$file_status]"
+    
+    # 如果文件状态是 A (新增) 或 ?? (未跟踪)，则视为首次提交
+    if [[ "$file_status" == "A " || "$file_status" == "??" ]]; then
+        is_first_commit=true
+        log "调试: 这是首次提交 (基于文件状态)"
+    else
+        is_first_commit=false
+        log "调试: 文件已在版本控制中 (基于文件状态)"
+    fi
+
+    log "调试: is_first_commit = $is_first_commit"
+
+    if [ "$is_first_commit" = true ]; then
+        # 首次提交：只处理 publishedAt
+        if ! grep -q "publishedAt:" "$file"; then
+            log "首次提交：未找到 publishedAt 字段，将在 title 后添加"
+            sed -i '' '/^title:/a\
 publishedAt: '"$currentDate"'\
 ' "$file"
-        log "已添加 publishedAt 字段"
+            log "已添加 publishedAt 字段"
+        fi
     else
-        # 只有当存在 publishedAt 时才处理 updatedAt
+        # 非首次提交：处理 publishedAt 和 updatedAt
+        if ! grep -q "publishedAt:" "$file"; then
+            log "非首次提交：未找到 publishedAt 字段，将在 title 后添加"
+            sed -i '' '/^title:/a\
+publishedAt: '"$currentDate"'\
+' "$file"
+            log "已添加 publishedAt 字段"
+        fi
+
         if grep -q "updatedAt:" "$file"; then
             sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" "$file"
             log "已更新现有的 updatedAt 字段"

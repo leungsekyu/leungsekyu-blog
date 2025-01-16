@@ -10,8 +10,8 @@ interface Props {
 const { posts, count } = Astro.props
 const sortedPosts = posts
   .sort((a, b) => {
-    const dateA = new Date(a.data.publishedAt).getTime()
-    const dateB = new Date(b.data.publishedAt).getTime()
+    const dateA = new Date(a.data.publishedAt ?? 0).getTime()
+    const dateB = new Date(b.data.publishedAt ?? 0).getTime()
     return dateB - dateA
   })
   .slice(0, count ?? posts.length)

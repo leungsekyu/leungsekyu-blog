@@ -8,8 +8,8 @@ const ogImage = new URL(`/v1/generate/og/${Astro.params.slug}.png`, Astro.url)
 
 interface Props {
   author: string
-  publishedAt: Date
-  updatedAt: Date
+  publishedAt: Date | undefined
+  updatedAt: Date | undefined
   headings: unknown
   description: string
   title: string

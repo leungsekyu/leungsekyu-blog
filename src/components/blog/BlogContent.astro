@@ -1,8 +1,8 @@
 ---
 interface Props {
   author: string
-  publishedAt: Date
-  updatedAt: Date
+  publishedAt: Date | undefined
+  updatedAt: Date | undefined
 }
 
 const { author, publishedAt, updatedAt } = Astro.props
@@ -12,13 +12,19 @@ const { author, publishedAt, updatedAt } = Astro.props
   <a href="/blog/" title="Back to blog">&larr; 返回博客</a>
 
   <p class="text-slate text-sm md:text-base">
-    由 {author} 发布于 {
-      publishedAt.toLocaleString('zh-CN', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
+    {
+      publishedAt && (
+        <>
+          由 {author} 发布于{' '}
+          {publishedAt.toLocaleString('zh-CN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </>
+      )
     }
+
     {
       updatedAt && (
         <em>

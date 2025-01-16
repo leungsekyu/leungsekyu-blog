@@ -27,9 +27,14 @@ const blogCollection = defineCollection({
       description: z.string(),
 
       // 发布日期 - 将字符串转换为 Date 对象
-      createdAt: z.string().transform((str) => new Date(str)),
-      publishedAt: z.string().transform((str) => new Date(str)),
-      updatedAt: z.string().transform((str) => new Date(str)),
+      publishedAt: z
+        .string()
+        .transform((str) => new Date(str))
+        .optional(),
+      updatedAt: z
+        .string()
+        .transform((str) => new Date(str))
+        .optional(),
 
       // 文章封面图片
       imgUrl: image(),

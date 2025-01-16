@@ -1,10 +1,11 @@
 ---
 interface Props {
-  pubDate: Date;
-  author: string;
+  author: string
+  publishedAt: Date
+  updatedAt: Date
 }
 
-const { pubDate, author } = Astro.props;
+const { author, publishedAt, updatedAt } = Astro.props
 ---
 
 <article class="w-sm md:w-prose md:prose prose-slate poppins">
@@ -12,13 +13,23 @@ const { pubDate, author } = Astro.props;
 
   <p class="text-slate text-sm md:text-base">
     由 {author} 发布于 {
-      pubDate.toLocaleString('zh-CN', {
+      publishedAt.toLocaleString('zh-CN', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
       })
+    }
+    {
+      updatedAt && (
+        <em>
+          更新于{' '}
+          {updatedAt.toLocaleString('zh-CN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </em>
+      )
     }
   </p>
 

@@ -1,5 +1,5 @@
-import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { defineCollection, z } from 'astro:content'
+import { glob } from 'astro/loaders'
 
 // 定义博客集合的配置
 const blogCollection = defineCollection({
@@ -7,8 +7,8 @@ const blogCollection = defineCollection({
   // pattern: 匹配所有非下划线开头的 .md 文件
   // base: 指定博客文件的基础目录
   loader: glob({
-    pattern: "**/[^_]*.md",
-    base: "./src/content/blog",
+    pattern: '**/[^_]*.md',
+    base: './src/content/blog',
   }),
 
   // 定义博客文章的数据模式
@@ -27,14 +27,16 @@ const blogCollection = defineCollection({
       description: z.string(),
 
       // 发布日期 - 将字符串转换为 Date 对象
-      pubDate: z.string().transform((str) => new Date(str)),
+      createdAt: z.string().transform((str) => new Date(str)),
+      publishedAt: z.string().transform((str) => new Date(str)),
+      updatedAt: z.string().transform((str) => new Date(str)),
 
       // 文章封面图片
       imgUrl: image(),
     }),
-});
+})
 
 // 导出所有内容集合
 export const collections = {
   blog: blogCollection,
-};
+}

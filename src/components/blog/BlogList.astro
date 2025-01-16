@@ -1,20 +1,20 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BlogSummaryCard from './BlogSummaryCard.astro';
+import type { CollectionEntry } from 'astro:content'
+import BlogSummaryCard from './BlogSummaryCard.astro'
 
 interface Props {
-  posts: CollectionEntry<'blog'>[];
-  count?: number;
+  posts: CollectionEntry<'blog'>[]
+  count?: number
 }
 
-const { posts, count } = Astro.props;
+const { posts, count } = Astro.props
 const sortedPosts = posts
   .sort((a, b) => {
-    const dateA = new Date(a.data.pubDate).getTime();
-    const dateB = new Date(b.data.pubDate).getTime();
-    return dateB - dateA;
+    const dateA = new Date(a.data.publishedAt).getTime()
+    const dateB = new Date(b.data.publishedAt).getTime()
+    return dateB - dateA
   })
-  .slice(0, count ?? posts.length);
+  .slice(0, count ?? posts.length)
 ---
 
 <ul class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -24,7 +24,7 @@ const sortedPosts = posts
         <li>
           <BlogSummaryCard post={post} />
         </li>
-      );
+      )
     })
   }
 </ul>

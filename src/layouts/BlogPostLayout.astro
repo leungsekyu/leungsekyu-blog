@@ -8,19 +8,20 @@ const ogImage = new URL(`/v1/generate/og/${Astro.params.slug}.png`, Astro.url)
 
 interface Props {
   author: string
-  pubDate: Date
+  publishedAt: Date
+  updatedAt: Date
   headings: unknown
   description: string
   title: string
 }
 
-const { author, pubDate, headings, description, title } = Astro.props
+const { author, publishedAt, updatedAt, headings, description, title } = Astro.props
 ---
 
 <DefaultLayout title={title} description={description} ogImage={ogImage}>
   <main class="flex justify-center p-6 lg:grid lg:grid-cols-3">
     <BlogSideBar headings={headings as any[]} />
-    <BlogContent {pubDate} {author}>
+    <BlogContent {author} {publishedAt} {updatedAt}>
       <slot />
     </BlogContent>
   </main>

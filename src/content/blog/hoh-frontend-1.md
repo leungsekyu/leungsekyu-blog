@@ -3,7 +3,7 @@ title: 学习笔记 | HOH 前端共学营 01
 description: Sui Move 学习笔记
 author: 'leungsekyu'
 publishedAt: 2025-01-21 15:24
-updatedAt: 2025-01-21 15:52
+updatedAt: 2025-01-21 15:55
 tags:
   - HOH
   - 前端共学营
@@ -46,7 +46,6 @@ sui move new filling
 [Move Analyzer VS Code Extension](https://docs.sui.io/references/ide/move)
 
 ```mermaid
-%%{init: {'look': 'handDrawn'}}%%
 graph TD
   A[用户]
     B[帐号 1]

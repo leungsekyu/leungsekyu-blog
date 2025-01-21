@@ -1,15 +1,15 @@
 ---
-title: HOH｜前端共学营 01（2024年12月30日）
-publishedAt: 2025-01-17 07:07
-updatedAt: 2025-01-17 07:08
+title: 学习笔记 | HOH 前端共学营 01
+description: Sui Move 学习笔记
 author: 'leungsekyu'
+publishedAt: 2025-01-21 15:24
+updatedAt: 2025-01-17 07:08
 tags:
   - HOH
   - 前端共学营
   - Sui
   - Move
-imgUrl: '../../assets/hoh/hoh-frontend-01-20241230.jpg'
-description: Sui Move 学习笔记
+imgUrl: '../../assets/hoh-frontend-01-20241230.jpg'
 ---
 
 # Sui Move 101
@@ -41,17 +41,20 @@ sui move new filling
 // === Getter Functions ===
 ```
 
+## 3. VSCode 插件
 
-<!-- 正文
-_斜体_
-**粗体**
-~~删除~~
+[Move Analyzer VS Code Extension](https://docs.sui.io/references/ide/move)
 
-- 列表
-
-```js
-// 代码
-console.log('hello world')
+```mermaid
+%%{init: {'look': 'handDrawn'}}%%
+graph TD
+  A[用户]
+    B[帐号 1]
+      B --> B1[文件夹 1]
+      B --> B2[文件夹 2]
+    C[帐号 2]
+      C --> C1[文件夹 1]
+      C --> C2[文件夹 2 📁]
+  A --> B
+  A --> C
 ```
-
-> 引用 -->

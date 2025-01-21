@@ -7,6 +7,9 @@
 - 整理 BlogContent
 - 整理 README
   ~~居中显示滚动条图标~~
+- astro template 日期
+- 尝试客户端 Mermaid
+- MDX pre-commit
 
 ## 特色
 

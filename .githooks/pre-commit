@@ -42,8 +42,8 @@ for file in $staged_files; do
     if [ "$is_first_commit" = true ]; then
         # 首次提交：只处理 publishedAt
         if ! grep -q "publishedAt:" "$file"; then
-            log "首次提交：未找到 publishedAt 字段，将在 title 后添加"
-            sed -i '' '/^title:/a\
+            log "首次提交：未找到 publishedAt 字段，将在 author 后添加"
+            sed -i '' '/^author:/a\
 publishedAt: '"$currentDate"'\
 ' "$file"
             log "已添加 publishedAt 字段"
@@ -55,8 +55,8 @@ publishedAt: '"$currentDate"'\
     else
         # 非首次提交：处理 publishedAt 和 updatedAt
         if ! grep -q "publishedAt:" "$file"; then
-            log "非首次提交：未找到 publishedAt 字段，将在 title 后添加"
-            sed -i '' '/^title:/a\
+            log "非首次提交：未找到 publishedAt 字段，将在 author 后添加"
+            sed -i '' '/^author:/a\
 publishedAt: '"$currentDate"'\
 ' "$file"
             log "已添加 publishedAt 字段"

@@ -26,6 +26,7 @@ export default defineConfig({
         {
           mermaidConfig: {
             look: 'handDrawn',
+            fontFamily: '"PingFang SC", "Microsoft YaHei", sans-serif',
           },
         },
       ],

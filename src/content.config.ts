@@ -7,7 +7,7 @@ const blogCollection = defineCollection({
   // pattern: 匹配所有非下划线开头的 .md 文件
   // base: 指定博客文件的基础目录
   loader: glob({
-    pattern: '**/[^_]*.md',
+    pattern: '**/[^_]*.{md,mdx}',
     base: './src/content/blog',
   }),
 

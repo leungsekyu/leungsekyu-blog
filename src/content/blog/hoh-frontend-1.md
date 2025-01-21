@@ -3,7 +3,7 @@ title: 学习笔记 | HOH 前端共学营 01
 description: Sui Move 学习笔记
 author: 'leungsekyu'
 publishedAt: 2025-01-21 15:24
-updatedAt: 2025-01-17 07:08
+updatedAt: 2025-01-21 15:52
 tags:
   - HOH
   - 前端共学营
@@ -54,7 +54,7 @@ graph TD
       B --> B2[文件夹 2]
     C[帐号 2]
       C --> C1[文件夹 1]
-      C --> C2[文件夹 2 📁]
+      C --> C2[文件夹 2]
   A --> B
   A --> C
 ```

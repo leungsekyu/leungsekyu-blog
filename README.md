@@ -6,7 +6,7 @@
 - 整理 BlogPostLayout
 - 整理 BlogContent
 - 整理 README
-~~居中显示滚动条图标~~
+  ~~居中显示滚动条图标~~
 
 ## 特色
 
@@ -39,6 +39,8 @@ https://pagespeed.web.dev/
 - RSS 页没有浏览器标题
 
 - 移动端浏览器不显示 favicon
+
+- MDX 侧栏不显示
 
 改进：
 

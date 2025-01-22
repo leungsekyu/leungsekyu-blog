@@ -1,9 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import BlogList from '@components/blog/BlogList.astro';
+import { getCollection } from 'astro:content'
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import BlogList from '@components/blog/BlogList.astro'
 
-const posts = await getCollection('blog');
+const posts = await getCollection('blog')
 ---
 
 <DefaultLayout title="博客" description="leungsekyu 的所有博客文章">

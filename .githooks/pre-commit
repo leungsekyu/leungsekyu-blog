@@ -11,11 +11,11 @@ log "脚本开始执行..."
 currentDate=$(date +"%Y-%m-%d %H:%M")
 log "当前时间: $currentDate"
 
-# 获取所有暂存区中的 md 文件
-staged_files=$(git diff --cached --name-only | grep "^src/content/blog/.*\.md$")
+# 获取所有暂存区中的 md 和 mdx 文件
+staged_files=$(git diff --cached --name-only | grep -E "^src/content/blog/.*\.(md|mdx)$")
 
 if [ -z "$staged_files" ]; then
-    log "没有找到任何暂存区中的 md 文件"
+    log "没有找到任何暂存区中的 md/mdx 文件"
     log "脚本执行完成"
     exit 0
 fi
@@ -39,10 +39,20 @@ for file in $staged_files; do
         log "调试: 文件已在版本控制中, 非首次提交 (基于文件状态)"
     fi
 
+    # 首先检查是否存在 author 字段
+    if ! grep -q "author:" "$file"; then
+        log "未找到 author 字段，将在 description 后添加"
+        sed -i '' '/^description:/a\
+author: leungsekyu\
+' "$file"
+        log "已添加 author 字段"
+    fi
+
     if [ "$is_first_commit" = true ]; then
-        # 首次提交：只处理 publishedAt
+        # 首次提交：
+        # 1. 处理 publishedAt
         if ! grep -q "publishedAt:" "$file"; then
-            log "首次提交：未找到 publishedAt 字段，将在 author 后添加"
+            log "未找到 publishedAt 字段，将在 author 后添加"
             sed -i '' '/^author:/a\
 publishedAt: '"$currentDate"'\
 ' "$file"
@@ -51,23 +61,30 @@ publishedAt: '"$currentDate"'\
             log "已找到 publishedAt 字段，即将更新为 $currentDate ..."
             sed -i '' "s/publishedAt: .*/publishedAt: $currentDate/" "$file"
             log "已更新 publishedAt 字段"
-            
-            # 检查并删除 updatedAt 字段
+        fi
+         # 2. 检查并删除 updatedAt 字段
+        if grep -q "updatedAt:" "$file"; then
+            log "找到 updatedAt 字段，正在删除..."
+            sed -i '' '/updatedAt:/d' "$file"
+            log "已删除 updatedAt 字段"
+        fi
+    else
+        # 非首次提交：
+        # 1. 处理 publishedAt
+        if ! grep -q "publishedAt:" "$file"; then
+            log "未找到 publishedAt 字段，将在 author 后添加"
+            sed -i '' '/^author:/a\
+publishedAt: '"$currentDate"'\
+' "$file"
+            log "已添加 publishedAt 字段"
+            # 2. 检查并删除 updatedAt 字段
             if grep -q "updatedAt:" "$file"; then
                 log "找到 updatedAt 字段，正在删除..."
                 sed -i '' '/updatedAt:/d' "$file"
                 log "已删除 updatedAt 字段"
             fi
-        fi
-    else
-        # 非首次提交：处理 publishedAt 和 updatedAt
-        if ! grep -q "publishedAt:" "$file"; then
-            log "非首次提交：未找到 publishedAt 字段，将在 author 后添加"
-            sed -i '' '/^author:/a\
-publishedAt: '"$currentDate"'\
-' "$file"
-            log "已添加 publishedAt 字段"
         else
+            # 2. 处理 updatedAt
             if grep -q "updatedAt:" "$file"; then
                 log "已找到 updatedAt 字段，即将更新为 $currentDate "
                 sed -i '' "s/updatedAt: .*/updatedAt: $currentDate/" "$file"

@@ -17,7 +17,7 @@ const { post } = Astro.props;
 
   <!-- 封面 -->
   <div class="border-3 my-4 h-56 rounded-lg border-black">
-    <Image class="h-full w-full rounded object-cover" src={post.data.imgUrl} alt={post.data.title} width={800} height={400} />
+    <Image class="h-full w-full rounded object-cover" src={post.data.imgUrl} alt={`${post.data.title}的封面`} width={800} height={400} />
   </div>
 
   <!-- 描述 -->

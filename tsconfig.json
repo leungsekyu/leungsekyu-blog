@@ -1,20 +1,14 @@
 {
-  // 继承 Astro 的严格 TS 配置
   "extends": "astro/tsconfigs/strict",
-
   "compilerOptions": {
-    // 设置根目录
-    "baseUrl": ".",
-
-    // 保留 JSX 语法
+    "allowJs": true,
     "jsx": "preserve",
-
-    // 路径别名配置
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"], // 组件路径别名
-      "@layouts/*": ["src/layouts/*"], // 布局路径别名
-      "@pages/*": ["src/pages/*"], // 页面路径别名
-      "@utils/*": ["src/utils/*"] // 工具函数路径别名
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }

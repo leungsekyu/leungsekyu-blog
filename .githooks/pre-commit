@@ -51,6 +51,13 @@ publishedAt: '"$currentDate"'\
             log "已找到 publishedAt 字段，即将更新为 $currentDate ..."
             sed -i '' "s/publishedAt: .*/publishedAt: $currentDate/" "$file"
             log "已更新 publishedAt 字段"
+            
+            # 检查并删除 updatedAt 字段
+            if grep -q "updatedAt:" "$file"; then
+                log "找到 updatedAt 字段，正在删除..."
+                sed -i '' '/updatedAt:/d' "$file"
+                log "已删除 updatedAt 字段"
+            fi
         fi
     else
         # 非首次提交：处理 publishedAt 和 updatedAt

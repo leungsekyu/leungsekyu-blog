@@ -7,12 +7,12 @@ import RecentBlogPosts from '@components/blog/RecentBlogPosts.astro'
 const ogImage = new URL(`/v1/generate/og/${Astro.params.slug}.png`, Astro.url)
 
 interface Props {
-  author: string
+  title: string
+  description: string
+  author: string | undefined
   publishedAt: Date | undefined
   updatedAt: Date | undefined
   headings: unknown
-  description: string
-  title: string
 }
 
 const { author, publishedAt, updatedAt, headings, description, title } = Astro.props

@@ -21,9 +21,9 @@ const { Content } = await render(blogpost)
 <BlogPostLayout
   title={blogpost.data.title}
   description={blogpost.data.description}
+  author={blogpost.data.author}
   publishedAt={blogpost.data.publishedAt}
   updatedAt={blogpost.data.updatedAt}
-  author={blogpost.data.author}
   headings={blogpost.rendered?.metadata?.headings}
 >
   <Content />

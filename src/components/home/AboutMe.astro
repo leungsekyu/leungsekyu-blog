@@ -1,11 +1,11 @@
 ---
-import { Card } from '@eliancodes/brutal-ui';
-import { Button } from '@eliancodes/brutal-ui';
+import RandomColorCard from '@components/generic/RandomColorCard.astro'
+import { Button } from '@eliancodes/brutal-ui'
 ---
 
 <h2 class="hidden">我的个人简介</h2>
 <div class="col-span-4">
-  <Card>
+  <RandomColorCard>
     <div class="flex flex-col items-start justify-between gap-4">
       <p class="outfit mt-4 text-3xl md:text-5xl lg:text-7xl">
         我是 <span class="text-white">leungsekyu 💝 Jade</span>
@@ -13,5 +13,5 @@ import { Button } from '@eliancodes/brutal-ui';
       <p class="outfit mt-2 text-xl md:text-4xl lg:text-5xl">初级前端开发 / 正念之铃 🎐</p>
       <Button href="/blog/">进入博客 &rarr;</Button>
     </div>
-  </Card>
+  </RandomColorCard>
 </div>

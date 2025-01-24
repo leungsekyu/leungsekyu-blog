@@ -1,19 +1,26 @@
 ---
-import { techStack } from '@utils/tech-stack';
-import { Card } from '@eliancodes/brutal-ui';
-import { Pill } from '@eliancodes/brutal-ui';
+import { techStack } from '@utils/tech-stack'
+import RandomColorCard from '@components/generic/RandomColorCard.astro'
+import { Pill } from '@eliancodes/brutal-ui'
 ---
 
 <h2 class="hidden">本博客的技术栈</h2>
 <div class="col-span-2">
-  <Card>
+  <RandomColorCard>
     <h2 class="dm-serif mb-8 text-2xl font-bold md:text-4xl lg:text-6xl">搭建本博客用到的工具 🧰（学习中）</h2>
     <ul class="flex flex-wrap gap-4">
       {
         techStack.map((item) => (
           <li>
             <Pill>
-              <a class="sanchez" href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`访问 ${item.name}`} title={`转到 ${item.name}`}>
+              <a
+                class="sanchez"
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`转到 ${item.name}`}
+                aria-label={`访问 ${item.name}`}
+              >
                 {item.name}
               </a>
             </Pill>
@@ -21,5 +28,5 @@ import { Pill } from '@eliancodes/brutal-ui';
         ))
       }
     </ul>
-  </Card>
+  </RandomColorCard>
 </div>

@@ -3,7 +3,7 @@ import { Card } from '@eliancodes/brutal-ui'
 ---
 
 <div class="brutal-card-container">
-  <Card color="white">
+  <Card color="#818cf8">
     <slot />
   </Card>
 </div>
@@ -29,17 +29,15 @@ import { Card } from '@eliancodes/brutal-ui'
   ]
 
   function updateColor() {
-    const card = document.querySelector('.brutal-card-container .brutal-card')
-    if (!card) return
-    console.log(card)
+    const cards = document.querySelectorAll('.brutal-card-container .brutal-card')
+    if (!cards.length) return
 
-    const randomColor = colors[Math.floor(Math.random() * colors.length)]
-    card.style.backgroundColor = randomColor
+    cards.forEach((card) => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)]
+      card.style.backgroundColor = randomColor
+    })
   }
 
-  // 使用 astro:page-load 替代 DOMContentLoaded
   document.addEventListener('DOMContentLoaded', updateColor)
-
-  // 视图转换时更新
   document.addEventListener('astro:after-swap', updateColor)
 </script>

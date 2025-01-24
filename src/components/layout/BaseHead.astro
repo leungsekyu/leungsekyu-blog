@@ -1,5 +1,6 @@
 ---
 import LocalFont from '../generic/LocalFont.astro'
+import { ClientRouter } from 'astro:transitions'
 
 // 定义组件接收的属性类型
 interface Props {
@@ -54,7 +55,7 @@ const { title, description, ogImage } = Astro.props
   <meta property="og:type" content="website" />
   <meta property="og:title" content="leungsekyu.com" />
   <meta property="og:description" content="我的个人博客" />
-  <meta property="og:image" content="https://leungsekyu.netlify.app/avatar/leungsekyu.jpg" />
+  <!-- <meta property="og:image" content="https://leungsekyu.netlify.app/avatar/leungsekyu.jpg" /> -->
   <meta property="og:url" content={canonicalURL} />
 
   <!-- Open Graph / Facebook 元数据 -->
@@ -71,5 +72,5 @@ const { title, description, ogImage } = Astro.props
   <meta property="twitter:image" content={ogImage} />
   <meta property="twitter:url" content={canonicalURL} />
 
-  <slot />
+  <ClientRouter />
 </head>

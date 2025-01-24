@@ -1,0 +1,45 @@
+---
+import { Card } from '@eliancodes/brutal-ui'
+---
+
+<div class="brutal-card-container">
+  <Card color="white">
+    <slot />
+  </Card>
+</div>
+
+<script>
+  const colors = [
+    '#c084fc',
+    '#f472b6',
+    '#fb7185',
+    '#e879f9',
+    '#a78bfa',
+    '#818cf8',
+    '#60a5fa',
+    '#38bdf8',
+    '#22d3ee',
+    '#2dd4bf',
+    '#34d399',
+    '#4ade80',
+    '#a3e635',
+    '#facc15',
+    '#fb923c',
+    '#f87171',
+  ]
+
+  function updateColor() {
+    const card = document.querySelector('.brutal-card-container .brutal-card')
+    if (!card) return
+    console.log(card)
+
+    const randomColor = colors[Math.floor(Math.random() * colors.length)]
+    card.style.backgroundColor = randomColor
+  }
+
+  // 使用 astro:page-load 替代 DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', updateColor)
+
+  // 视图转换时更新
+  document.addEventListener('astro:after-swap', updateColor)
+</script>

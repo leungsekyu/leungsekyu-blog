@@ -7,8 +7,7 @@ import { join } from 'node:path'
 import { readFile } from 'fs/promises'
 
 const appDir = process.cwd()
-const getFontPath = (fontName: string) =>
-  join(appDir, 'public', 'fonts', fontName)
+const getFontPath = (fontName: string) => join(appDir, 'public', 'fonts', fontName)
 
 const fontFileSCRegular = getFontPath('NotoSansSC-Regular.ttf')
 const fontDataSCRegular: ArrayBuffer = await readFile(fontFileSCRegular)
@@ -16,9 +15,7 @@ const fontDataSCRegular: ArrayBuffer = await readFile(fontFileSCRegular)
 const fontFileSCBold = getFontPath('NotoSansSC-Bold.ttf')
 const fontDataSCBold: ArrayBuffer = await readFile(fontFileSCBold)
 
-const fontFileLatin = await fetch(
-  'https://og-playground.vercel.app/inter-latin-ext-700-normal.woff',
-)
+const fontFileLatin = await fetch('https://og-playground.vercel.app/inter-latin-ext-700-normal.woff')
 const fontDataLatin: ArrayBuffer = await fontFileLatin.arrayBuffer()
 
 const height = 630
@@ -27,6 +24,7 @@ const width = 1200
 export const GET: APIRoute = async () => {
   const link = 'https://leungsekyu.com'
   const avatar = 'https://leungsekyu.com/avatar/leungsekyu.jpg'
+  // const avatar = 'https://placehold.co/50x50.jpg'
   const html = toReactElement(`
   <div class="bg-white flex flex-col h-full p-12 w-full">
     <div class="flex h-full w-full bg-white border-[6px] border-black rounded-lg p-8 shadow-lg">

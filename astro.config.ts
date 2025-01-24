@@ -7,7 +7,6 @@ import mdx from '@astrojs/mdx'
 import remarkMermaid from 'remark-mermaidjs'
 
 export default defineConfig({
-  // site: 'https://leungsekyu.netlify.app/',
   site: 'https://leungsekyu.com/',
   integrations: [sitemap(), unocss({ injectReset: true }), mdx()],
   vite: {

@@ -1,37 +1,12 @@
 ---
 import { Card } from '@eliancodes/brutal-ui'
-
-const colors = [
-  '#c084fc',
-  '#f472b6',
-  '#fb7185',
-  '#e879f9',
-  '#a78bfa',
-  '#818cf8',
-  '#60a5fa',
-  '#38bdf8',
-  '#22d3ee',
-  '#2dd4bf',
-  '#34d399',
-  '#4ade80',
-  '#a3e635',
-  '#facc15',
-  '#fb923c',
-  '#f87171',
-]
 ---
 
 <div class="brutal-card-container">
-  <Card color={colors[4]}>
+  <Card color="#a78bfa">
     <slot />
   </Card>
 </div>
-
-<style>
-  .brutal-card-container > :global(.brutal-card) {
-    transition: background-color 1s ease;
-  }
-</style>
 
 <script>
   const colors = [

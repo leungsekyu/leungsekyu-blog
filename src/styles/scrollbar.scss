@@ -6,6 +6,12 @@ $sys-color-black: #000000;
 $primary: $sys-color-white;
 $secondary: $sys-color-black;
 
+// 滚动条尺寸
+$scrollbar-width-vertical: 22;
+$scrollbar-button-height-vertical: 24;
+$scrollbar-height-horizontal: 16;
+$scrollbar-button-width-horizontal: 16;
+
 // 棋盘格纹理
 $checker-linear-gradient: linear-gradient(
   45deg,
@@ -18,7 +24,8 @@ $checker-linear-gradient: linear-gradient(
 
 // 滚动条
 ::-webkit-scrollbar {
-  width: 22px;
+  width: #{$scrollbar-width-vertical}px;
+  height: #{$scrollbar-height-horizontal}px;
   background-color: $primary;
 }
 
@@ -31,15 +38,13 @@ $checker-linear-gradient: linear-gradient(
       0 0,
       2px 2px;
   }
-  border-left: 3px solid $secondary;
+  border: 2px solid $secondary;
 }
 
 // 滚动条滑块
 ::-webkit-scrollbar-thumb {
   background-color: $primary;
-  border: 2px solid $secondary {
-    right: none;
-  }
+  border: 2px solid $secondary;
 }
 
 // 滚动条按钮
@@ -49,31 +54,32 @@ $checker-linear-gradient: linear-gradient(
     &:start:decrement,
     &:end:increment {
       display: block;
-      height: 23.38px;
+      height: #{$scrollbar-button-height-vertical}px;
+      width: #{$scrollbar-button-width-horizontal}px;
     }
-  }
-  &:vertical:start {
-    background-image: url(@icons/scrollbar-up.svg);
-  }
-  &:vertical:start:active {
-    background-image: url(@icons/scrollbar-up-active.svg);
-  }
-  &:vertical:end {
-    background-image: url(@icons/scrollbar-down.svg);
-  }
-  &:vertical:end:active {
-    background-image: url(@icons/scrollbar-down-active.svg);
-  }
-  &:horizontal:start {
-    background-image: url(@icons/scrollbar-left.svg);
-  }
-  &:horizontal:start:active {
-    background-image: url(@icons/scrollbar-left-active.svg);
-  }
-  &:horizontal:end {
-    background-image: url(@icons/scrollbar-right.svg);
-  }
-  &:horizontal:end:active {
-    background-image: url(@icons/scrollbar-right-active.svg);
+    &:vertical:start {
+      background-image: url(@icons/scrollbar/vertical/up-#{$scrollbar-width-vertical}x#{$scrollbar-button-height-vertical}.svg);
+    }
+    &:vertical:start:active {
+      background-image: url(@icons/scrollbar/vertical/up-active-#{$scrollbar-width-vertical}x#{$scrollbar-button-height-vertical}.svg);
+    }
+    &:vertical:end {
+      background-image: url(@icons/scrollbar/vertical/down-#{$scrollbar-width-vertical}x#{$scrollbar-button-height-vertical}.svg);
+    }
+    &:vertical:end:active {
+      background-image: url(@icons/scrollbar/vertical/down-active-#{$scrollbar-width-vertical}x#{$scrollbar-button-height-vertical}.svg);
+    }
+    &:horizontal:start {
+      background-image: url(@icons/scrollbar/horizontal/left-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
+    }
+    &:horizontal:start:active {
+      background-image: url(@icons/scrollbar/horizontal/left-active-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
+    }
+    &:horizontal:end {
+      background-image: url(@icons/scrollbar/horizontal/right-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
+    }
+    &:horizontal:end:active {
+      background-image: url(@icons/scrollbar/horizontal/right-active-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
+    }
   }
 }

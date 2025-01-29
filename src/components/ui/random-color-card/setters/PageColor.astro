@@ -1,0 +1,11 @@
+---
+import PageColorSetter from '@components/ui/random-color-card/setters/PageColorSetter'
+
+interface Props {
+  color: string
+}
+
+const { color } = Astro.props
+---
+
+<PageColorSetter color={color} client:load />

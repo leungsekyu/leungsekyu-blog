@@ -1,10 +1,10 @@
 import { pageColor } from '@store/theme'
 
-interface PageColorSetterProps {
+interface Props {
   color: string
 }
 
-export default function PageColorSetter({ color }: PageColorSetterProps) {
+export default function PageColorSetter({ color }: Props) {
   pageColor.set(color)
   return null
 }

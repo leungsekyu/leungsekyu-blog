@@ -1,6 +1,6 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
-import PageColor from '@components/ui/random-color-card/setters/PageColor.astro'
+
 import MobileSocials from '@components/home/MobileSocials.astro'
 import About from '@components/home/About.astro'
 import RecentBlogPosts from '@components/blog/RecentBlogPosts.astro'
@@ -8,7 +8,6 @@ import RecentBlogPosts from '@components/blog/RecentBlogPosts.astro'
 
 <DefaultLayout title="主页" pageTitle="主页" description="leungsekyu 的个人博客主页">
   <main class="bg-pink p-6">
-    <PageColor color="#f472b6" />
     <MobileSocials />
     <About />
     <RecentBlogPosts count={3} />

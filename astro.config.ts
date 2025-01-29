@@ -6,11 +6,9 @@ import mdx from '@astrojs/mdx'
 
 import remarkMermaid from 'remark-mermaidjs'
 
-import preact from '@astrojs/preact'
-
 export default defineConfig({
   site: 'https://leungsekyu.com/',
-  integrations: [sitemap(), unocss({ injectReset: true }), mdx(), preact()],
+  integrations: [sitemap(), unocss({ injectReset: true }), mdx()],
   vite: {
     resolve: {
       alias: {

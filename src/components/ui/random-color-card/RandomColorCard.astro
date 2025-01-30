@@ -1,0 +1,52 @@
+---
+import { Card } from '@eliancodes/brutal-ui'
+
+interface Props {
+  pageColor?: string
+}
+
+const { pageColor } = Astro.props
+---
+
+<div class="brutal-card-container" data-page-color={pageColor}>
+  <Card color="#a78bfa">
+    <slot />
+  </Card>
+</div>
+
+<script>
+  const colors = [
+    '#c084fc',
+    '#f472b6',
+    '#fb7185',
+    '#e879f9',
+    '#a78bfa',
+    '#818cf8',
+    '#60a5fa',
+    '#38bdf8',
+    '#22d3ee',
+    '#2dd4bf',
+    '#34d399',
+    '#4ade80',
+    '#a3e635',
+    '#facc15',
+    '#fb923c',
+    '#f87171',
+  ]
+
+  function updateColor() {
+    const cards = document.querySelectorAll('.brutal-card-container > .brutal-card')
+    if (!cards.length) return
+
+    const pageColor = cards[0].closest('.brutal-card-container')?.getAttribute('data-page-color')
+    const filteredColors = pageColor ? colors.filter((color) => color !== pageColor) : colors
+    cards.forEach((card) => {
+      const randomColor = filteredColors[Math.floor(Math.random() * filteredColors.length)]
+      ;(card as HTMLElement).style.backgroundColor = randomColor
+    })
+  }
+
+  ;['DOMContentLoaded', 'astro:after-swap'].forEach((eventName) => {
+    document.addEventListener(eventName, updateColor)
+  })
+</script>

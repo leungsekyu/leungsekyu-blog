@@ -1,15 +1,16 @@
 ---
 import { getCollection } from 'astro:content'
-import RandomColorCard from '@components/generic/RandomColorCard.astro'
+import RandomColorCard from '@components/ui/random-color-card/RandomColorCard.astro'
 import { Button } from '@eliancodes/brutal-ui'
 import BlogList from '../blog/BlogList.astro'
 
 interface Props {
   count?: number
   currentSlug?: string
+  pageColor?: string
 }
 
-const { count, currentSlug } = Astro.props
+const { count, currentSlug, pageColor } = Astro.props
 
 const posts = (
   await getCollection('blog', ({ id }) => {
@@ -23,7 +24,7 @@ const posts = (
 
 <section class="mt-8">
   <h2 class="hidden">最近更新的文章</h2>
-  <RandomColorCard>
+  <RandomColorCard pageColor={pageColor}>
     <div class="flex items-start justify-between">
       <h2 class="dm-serif mb-8 text-2xl md:text-4xl lg:text-6xl">最近更新</h2>
       <div class="hidden md:block">

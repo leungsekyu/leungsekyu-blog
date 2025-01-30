@@ -1,19 +1,26 @@
 ---
 const { code } = Astro.props
+
+const mermaidConfig = `%%{init{"themeVariables": {"fontSize": "18px"},"look": "handDrawn"}}%%\n`
 ---
 
 <pre class="mermaid">
+  {mermaidConfig}
   {code}
 </pre>
 
 <script>
   import mermaid from 'mermaid'
-  mermaid.initialize({ startOnLoad: false })
 
-  // 手动触发渲染
-  document.addEventListener('DOMContentLoaded', () => {
+  function renderMermaid() {
     mermaid.run({
       querySelector: '.mermaid',
     })
-  })
+  }
+
+  // 初始加载
+  document.addEventListener('DOMContentLoaded', renderMermaid)
+
+  // 监听路由变化
+  document.addEventListener('astro:page-load', renderMermaid)
 </script>

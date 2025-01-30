@@ -5,3 +5,15 @@ const { code } = Astro.props
 <pre class="mermaid">
   {code}
 </pre>
+
+<script>
+  import mermaid from 'mermaid'
+  mermaid.initialize({ startOnLoad: false })
+
+  // 手动触发渲染
+  document.addEventListener('DOMContentLoaded', () => {
+    mermaid.run({
+      querySelector: '.mermaid',
+    })
+  })
+</script>

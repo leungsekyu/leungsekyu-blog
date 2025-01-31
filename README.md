@@ -1,52 +1,30 @@
-# TODO
+## 特性
 
-## 重要
+- 像素风滚动条（重构，SCSS + Figma）
+- 随机颜色卡片组件（重构，有性能损耗）
+- 博客文章自动插入作者、创作时间和更新时间（git pre-commit hook）
+- 在服务器端渲染博客文章内 Mermaid 图表（remark-mermaidjs + Playwright）
+- 使用 Astro Sitemap 提高网站 SEO
 
-- 研究微信 open graph 图片 / 链接封面！
-- 整理 BlogPostLayout
-- 整理 BlogContent
-- 整理 README
-  ~~居中显示滚动条图标~~
-- astro template 日期
-- 尝试客户端 Mermaid
-- MDX pre-commit
+## 交互
 
-## 特色
+### TODO
 
-- 组件颜色随机变化
-- 颂钵 / 风铃 🎐
+- 颂钵 🛎️（需尝试 Spline / Three.js）
 
-提高网站性能及可访问性
-https://pagespeed.web.dev/
+## 待研究
 
-## 次要
+### 网站性能
 
-- [slug].png.ts & default.png.ts
-- Sitemap: https://leungsekyu.com/sitemap-index.xml
+- [PageSpeed Insights](https://pagespeed.web.dev/)
+
+### RSS
+
 - pretty-feed-v3.xsl
-  https://docs.astro.build/zh-cn/guides/syntax-highlighting/#prism-
-  https://docs.astro.build/zh-cn/guides/integrations-guide/mdx/
+- RSS app 订阅无内容
+- RSS 页没有 favicon，标题需修改
 
-### prettier-plugin-tailwindcss
+### Open Graph
 
-[Sorting classes in function calls](https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file#sorting-classes-in-function-calls)
-
-在 public 文件夹新增了个人头像（可能会影响访问速度）
-
-## 错误
-
-- open graph 图片的默认头像没有显示
-  原因：需要二次部署才显示
-
-- RSS 无内容
-- RSS 页没有浏览器标题
-
-- 移动端浏览器不显示 favicon
-
-- MDX 侧栏不显示
-
-改进：
-
-- scrollbar 代码使用 SCSS + public/icons 图标重写
-- 发布日期 & 更新日期自动化
-  - 备忘：.git/hooks/pre-commit
+- 微信朋友圈缩略图卡片
+- 在 public 文件夹新增了个人头像（尺寸过大，可能会影响访问速度）

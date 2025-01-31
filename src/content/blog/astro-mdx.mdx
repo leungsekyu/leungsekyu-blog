@@ -3,14 +3,12 @@ title: 学习笔记 | Astro MDX
 description: 记录一些 Astro MDX 的尝试
 author: leungsekyu
 publishedAt: 2025-01-23 02:21
-updatedAt: 2025-01-31 22:11
+updatedAt: 2025-01-31 22:29
 tags:
   - Astro
   - MDX
 imgUrl: '../../assets/astro-mdx.svg'
 ---
-
-import Mermaid from '@components/blog/Mermaid.astro'
 
 # {frontmatter.title}
 
@@ -49,37 +47,3 @@ graph LR
   A[Cat 🐱] --> B[Cat Pro Max 🐯]
 ```
 ````
-
-test： 使用 remark-mermaidjs 服务器端渲染 svg
-
-```mermaid
-graph TD
-  A[user]
-    B[帐号 1]
-      B --> B1[folder 1]
-      B --> B2[文件夹 2]
-    C[account 2]
-      C --> C1[文件夹 1]
-      C --> C2[文件夹 2]
-  A --> B
-  A --> C
-```
-
-test：使用 Mermaid 组件
-
-<Mermaid
-  code={`
-graph TD
-  A[user]
-    B[帐号 1]
-      B --> B1[folder 1]
-      B --> B2[文件夹 2 🐯]
-    C[account 2]
-      C --> C1[文件夹 1]
-      C --> C2[文件夹 2]
-  A --> B
-  A --> C
-`}
-/>
-test：使用 Mermaid Live Editor 生成的 SVG（没有规定字体）
-![](https://mermaid.ink/svg/pako:eNplkD1OAzEQha9iTb0pNuUWSMluSwUVdoqRPfsj1p6VYwuhKHVKqDgBZ-BHXIflHDhsCCjp3rzvaUbzNqDZEBTQeBxacV0pJ8RCxjX51V4KsZTj2-P48Cryg5EsMZtdiGUua-4N-XMyl19Pu8-Pl_H5XcwPsJSoNUcXjk7yfuJl_i-en8LzXYvpyJ8sIQNL3mJn0iebPVAQWrKkoEjSUI2xDwqyCfXMtxNp0ZnK451ToNw2rcEY-OreaSiCj5SB59i0UNTYr9MUB4OBqg5TW_Y3MqC7YbbHEJkusL-catXs6q6B7Tecgnfs)

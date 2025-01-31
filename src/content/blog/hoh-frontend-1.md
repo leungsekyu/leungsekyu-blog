@@ -3,7 +3,7 @@ title: 学习笔记 | HOH 前端共学营 01
 description: Sui Move 学习笔记
 author: 'leungsekyu'
 publishedAt: 2025-01-21 15:24
-updatedAt: 2025-01-21 21:27
+updatedAt: 2025-01-31 22:29
 tags:
   - HOH
   - 前端共学营
@@ -48,12 +48,13 @@ sui move new filling
 ```mermaid
 graph TD
   A[user]
-    B[帐号 1]
+    B[account 1]
       B --> B1[folder 1]
-      B --> B2[文件夹 2]
+      B --> B2[folder 2]
     C[account 2]
-      C --> C1[文件夹 1]
-      C --> C2[文件夹 2]
+      C --> C1[folder 1]
+      C --> C2[folder 2]
   A --> B
   A --> C
 ```
+

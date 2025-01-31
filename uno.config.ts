@@ -13,14 +13,6 @@ export default defineConfig({
           const icons = await import('@iconify-json/simple-icons/icons.json')
           return icons.default
         },
-        mdi: async () => {
-          const icons = await import('@iconify-json/mdi/icons.json')
-          return icons.default
-        },
-        ic: async () => {
-          const icons = await import('@iconify-json/ic/icons.json')
-          return icons.default
-        },
         logos: async () => {
           const icons = await import('@iconify-json/logos/icons.json')
           return icons.default

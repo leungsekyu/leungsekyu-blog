@@ -1,26 +1,37 @@
 ---
-const { code } = Astro.props
+interface Props {
+  code: string
+}
 
-const mermaidConfig = `%%{init{"themeVariables": {"fontSize": "18px"},"look": "handDrawn"}}%%\n`
+const { code } = Astro.props
 ---
 
 <pre class="mermaid">
-  {mermaidConfig}
   {code}
 </pre>
 
 <script>
+  // import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs'
   import mermaid from 'mermaid'
 
-  function renderMermaid() {
-    mermaid.run({
-      querySelector: '.mermaid',
-    })
+  // 只执行一次的全局配置
+  mermaid.initialize({
+    startOnLoad: true,
+    themeVariables: {
+      fontSize: '24px',
+    },
+    look: 'handDrawn',
+  })
+
+  // 用于重新渲染图表的函数
+  async function renderMermaid() {
+    try {
+      await mermaid.run()
+    } catch (error) {
+      console.error('Mermaid 渲染失败:', error)
+    }
   }
 
-  // 初始加载
-  document.addEventListener('DOMContentLoaded', renderMermaid)
-
-  // 监听路由变化
-  document.addEventListener('astro:page-load', renderMermaid)
+  // 监听 view transition 事件
+  document.addEventListener('astro:after-swap', renderMermaid)
 </script>

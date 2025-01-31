@@ -6,6 +6,9 @@ import mdx from '@astrojs/mdx'
 
 import remarkMermaid from 'remark-mermaidjs'
 
+import { rehypeShiki } from '@astrojs/markdown-remark'
+import rehypeMermaid from 'rehype-mermaid'
+
 export default defineConfig({
   site: 'https://leungsekyu.com/',
   integrations: [sitemap(), unocss({ injectReset: true }), mdx()],
@@ -20,16 +23,7 @@ export default defineConfig({
     },
   },
   markdown: {
-    remarkPlugins: [
-      [
-        remarkMermaid,
-        {
-          mermaidConfig: {
-            look: 'handDrawn',
-            // fontFamily: '"PingFang SC", "Microsoft YaHei", sans-serif',
-          },
-        },
-      ],
-    ],
+    rehypePlugins: [rehypeMermaid, rehypeShiki],
+    syntaxHighlight: false,
   },
 })

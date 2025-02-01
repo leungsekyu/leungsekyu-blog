@@ -2,31 +2,41 @@
 interface Props {
   site: string
   name: string
+  tags?: string[]
 }
 
-const { site, name } = Astro.props
+const { site, name, tags } = Astro.props
 
 // 从 URL 中提取主域名
 const url = new URL(site)
 const iconUrl = `${url.protocol}//${url.hostname}/favicon.ico`
-const domain = url.hostname.replace('www.', '')
 ---
 
-<a
-  class="flex items-center gap-2 text-black hover:text-gray-600 hover:underline"
-  href={site}
-  target="_blank"
-  rel="noopener noreferrer"
-  title={site}
-  aria-label={`访问 ${name} (在新窗口打开)`}
->
-  <img
-    src={iconUrl}
-    alt={`${name} 网站图标`}
-    width="16"
-    height="16"
-    loading="lazy"
-    onerror="this.onerror=null; this.src='/favicon/favicon.svg';"
-  />
-  <span>{name}</span>
-</a>
+<div class="flex items-center gap-2">
+  <a
+    class="flex items-center gap-2 text-black hover:text-gray-600 hover:underline"
+    href={site}
+    target="_blank"
+    rel="noopener noreferrer"
+    title={site}
+    aria-label={`访问 ${name} (在新窗口打开)`}
+  >
+    <img
+      src={iconUrl}
+      alt={`${name} 网站图标`}
+      width="16"
+      height="16"
+      loading="lazy"
+      onerror="this.onerror=null; this.src='/favicon/favicon.svg';"
+    />
+    <span>{name}</span>
+  </a>
+  {
+    tags &&
+      tags.map((tag) => (
+        <span class="inline-flex cursor-pointer items-center rounded-full border border-black bg-white px-2 py-0.5 text-xs transition-colors hover:text-gray-600 hover:underline">
+          {tag}
+        </span>
+      ))
+  }
+</div>

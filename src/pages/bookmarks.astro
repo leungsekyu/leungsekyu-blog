@@ -10,9 +10,11 @@ import { bookmarks } from '@data/bookmarks'
     {
       Object.entries(bookmarks).map(([category, links]) => (
         <BookmarkSection title={category}>
-          {links.map((link) => (
-            <BookmarkLink site={link.site} name={link.name} />
-          ))}
+          <div class="flex flex-col gap-3">
+            {links.map((link) => (
+              <BookmarkLink site={link.site} name={link.name} tags={link.tags} />
+            ))}
+          </div>
         </BookmarkSection>
       ))
     }

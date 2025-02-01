@@ -45,11 +45,11 @@ import { bookmarks } from '@data/bookmarks'
       const tag = button.getAttribute('data-tag')
       if (!tag) return
       if (tags.has(tag)) {
-        button.classList.remove('bg-white', 'text-black')
-        button.classList.add('bg-blue', 'text-white')
+        button.classList.remove('bg-white')
+        button.classList.add('bg-blue')
       } else {
-        button.classList.remove('bg-blue', 'text-white')
-        button.classList.add('bg-white', 'text-black')
+        button.classList.remove('bg-blue')
+        button.classList.add('bg-white')
       }
     })
 

@@ -5,38 +5,29 @@ interface Props {
   tags?: string[]
 }
 
-const { site, name, tags } = Astro.props
+const { site, name, tags = [] } = Astro.props
 
 // 从 URL 中提取主域名
 const url = new URL(site)
 const iconUrl = `${url.protocol}//${url.hostname}/favicon.ico`
 ---
 
-<div class="flex items-center gap-2">
-  <a
-    class="flex items-center gap-2 text-black hover:text-gray-600 hover:underline"
-    href={site}
-    target="_blank"
-    rel="noopener noreferrer"
-    title={site}
-    aria-label={`访问 ${name} (在新窗口打开)`}
-  >
-    <img
-      src={iconUrl}
-      alt={`${name} 网站图标`}
-      width="16"
-      height="16"
-      loading="lazy"
-      onerror="this.onerror=null; this.src='/favicon/favicon.svg';"
-    />
-    <span>{name}</span>
+<div class="bookmark-item">
+  <a href={site} data-tags={JSON.stringify(tags)} class="block rounded p-2 transition-colors hover:bg-gray-100">
+    {name}
   </a>
   {
-    tags &&
-      tags.map((tag) => (
-        <span class="inline-flex cursor-pointer items-center rounded-full border border-black bg-white px-2 py-0.5 text-xs transition-colors hover:text-gray-600 hover:underline">
-          {tag}
-        </span>
-      ))
+    tags.length > 0 && (
+      <div class="ml-2 mt-1 flex flex-wrap gap-1">
+        {tags.map((tag) => (
+          <button
+            class="tag-button rounded-full bg-gray-200 px-2 py-0.5 text-sm transition-colors hover:bg-gray-300"
+            data-tag={tag}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    )
   }
 </div>

@@ -20,3 +20,47 @@ import { bookmarks } from '@data/bookmarks'
     }
   </main>
 </DefaultLayout>
+
+<script>
+  import { selectedTags, toggleTag } from '../stores/tagStore'
+
+  const bookmarkLinks = document.querySelectorAll('a[data-tags]')
+
+  // 为标签添加点击事件
+  document.addEventListener('click', (e) => {
+    const tagButton = (e.target as Element).closest('.tag-button')
+    if (!tagButton) return
+
+    e.preventDefault()
+    const tag = tagButton.getAttribute('data-tag')
+    if (tag) toggleTag(tag)
+  })
+
+  // 监听标签变化
+  selectedTags.subscribe((tags) => {
+    // 更新标签样式
+    document.querySelectorAll('.tag-button').forEach((button) => {
+      const tag = button.getAttribute('data-tag')
+      if (tags.has(tag)) {
+        button.classList.remove('bg-gray-200')
+        button.classList.add('bg-blue-500', 'text-white')
+      } else {
+        button.classList.remove('bg-blue-500', 'text-white')
+        button.classList.add('bg-gray-200')
+      }
+    })
+
+    // 过滤书签
+    bookmarkLinks.forEach((link) => {
+      const linkTags = JSON.parse(link.dataset.tags || '[]')
+      const shouldShow = tags.size === 0 || Array.from(tags).every((tag) => linkTags.includes(tag))
+      link.closest('.bookmark-item')?.classList.toggle('hidden', !shouldShow)
+    })
+
+    // 处理空分类
+    document.querySelectorAll('.bookmark-section').forEach((section) => {
+      const visibleLinks = section.querySelectorAll('.bookmark-item:not(.hidden)').length
+      section.classList.toggle('hidden', visibleLinks === 0)
+    })
+  })
+</script>

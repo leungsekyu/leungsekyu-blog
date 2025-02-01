@@ -13,19 +13,26 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://faucet.n1stake.com/',
       name: 'Sui Testnet Faucet',
-      tags: ['Sui', '测试网', '水龙头'],
+      tags: ['水龙头'],
     },
     {
       site: 'https://github.com/move-cn/letsmove',
-      name: 'letsmove',
-      tags: ['Sui', 'Move', '学习'],
+      name: "Let's Move",
+      tags: ['学习'],
     },
   ],
   文献类网站: [
     {
       site: 'https://pss-system.cponline.cnipa.gov.cn/conventionalSearch',
       name: '专利检索及分析',
-      tags: ['专利', '文献检索'],
+      tags: ['专利'],
+    },
+  ],
+  Astro: [
+    {
+      site: 'https://github.com/ElianCodes/brutal-ui/blob/main/src/components/Pill.astro',
+      name: 'Brutal UI → Pill',
+      tags: ['Brutal'],
     },
   ],
 }

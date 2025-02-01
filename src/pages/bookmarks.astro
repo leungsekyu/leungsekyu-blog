@@ -1,0 +1,20 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import BookmarkLink from '@components/bookmark/BookmarkLink.astro'
+import BookmarkSection from '@components/bookmark/BookmarkSection.astro'
+import { bookmarks } from '@data/bookmarks'
+---
+
+<DefaultLayout title="主页" pageTitle="主页" description="leungsekyu 的个人博客主页">
+  <main class="bg-amber p-6">
+    {
+      Object.entries(bookmarks).map(([category, links]) => (
+        <BookmarkSection title={category}>
+          {links.map((link) => (
+            <BookmarkLink site={link.site} name={link.name} />
+          ))}
+        </BookmarkSection>
+      ))
+    }
+  </main>
+</DefaultLayout>

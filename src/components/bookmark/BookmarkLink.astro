@@ -1,0 +1,32 @@
+---
+interface Props {
+  site: string
+  name: string
+}
+
+const { site, name } = Astro.props
+
+// 从 URL 中提取主域名
+const url = new URL(site)
+const iconUrl = `${url.protocol}//${url.hostname}/favicon.ico`
+const domain = url.hostname.replace('www.', '')
+---
+
+<a
+  class="flex items-center gap-2 text-black hover:text-gray-600 hover:underline"
+  href={site}
+  target="_blank"
+  rel="noopener noreferrer"
+  title={site}
+  aria-label={`访问 ${name} (在新窗口打开)`}
+>
+  <img
+    src={iconUrl}
+    alt={`${name} 网站图标`}
+    width="16"
+    height="16"
+    loading="lazy"
+    onerror="this.onerror=null; this.src='/favicon/favicon.svg';"
+  />
+  <span>{name}</span>
+</a>

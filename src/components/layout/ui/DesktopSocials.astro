@@ -11,7 +11,7 @@ const socials = [
     icon: 'i-simple-icons-xiaohongshu',
   },
   { name: 'RSS', url: '/rss.xml', icon: 'i-grommet-icons-rss' },
-];
+]
 ---
 
 {
@@ -22,10 +22,10 @@ const socials = [
         href={item.url}
         target="_blank"
         rel="noopener noreferrer"
-        title={item.name === 'RSS' ? '本站RSS源' : `我的${item.name}`}
+        title={item.name === 'RSS' ? '本站RSS订阅源' : `我的${item.name}`}
         aria-label={item.name === 'RSS' ? '订阅本站RSS源' : `访问我的${item.name}`}
       >
-        <div class:list={[item.icon, item.name === '小红书' ? '-mt-2 p-5' : 'p-3']} />
+        <div class:list={[item.icon, item.name === '小红书' ? 'p-6' : 'p-3']} />
       </a>
     </li>
   ))

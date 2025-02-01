@@ -24,7 +24,7 @@ import { bookmarks } from '@data/bookmarks'
 <script>
   import { selectedTags, toggleTag } from '../stores/tagStore'
 
-  const bookmarkLinks = document.querySelectorAll('a[data-tags]')
+  const bookmarkLinks = document.querySelectorAll('a[data-tags]') as NodeListOf<HTMLAnchorElement>
 
   // 为标签添加点击事件
   document.addEventListener('click', (e) => {
@@ -33,20 +33,23 @@ import { bookmarks } from '@data/bookmarks'
 
     e.preventDefault()
     const tag = tagButton.getAttribute('data-tag')
+    console.log(tag)
     if (tag) toggleTag(tag)
   })
 
   // 监听标签变化
   selectedTags.subscribe((tags) => {
+    console.log(tags)
     // 更新标签样式
     document.querySelectorAll('.tag-button').forEach((button) => {
       const tag = button.getAttribute('data-tag')
+      if (!tag) return
       if (tags.has(tag)) {
-        button.classList.remove('bg-gray-200')
-        button.classList.add('bg-blue-500', 'text-white')
+        button.classList.remove('bg-white', 'text-black')
+        button.classList.add('bg-blue', 'text-white')
       } else {
-        button.classList.remove('bg-blue-500', 'text-white')
-        button.classList.add('bg-gray-200')
+        button.classList.remove('bg-blue', 'text-white')
+        button.classList.add('bg-white', 'text-black')
       }
     })
 
@@ -54,7 +57,8 @@ import { bookmarks } from '@data/bookmarks'
     bookmarkLinks.forEach((link) => {
       const linkTags = JSON.parse(link.dataset.tags || '[]')
       const shouldShow = tags.size === 0 || Array.from(tags).every((tag) => linkTags.includes(tag))
-      link.closest('.bookmark-item')?.classList.toggle('hidden', !shouldShow)
+      const parent = link.closest('.bookmark-item')
+      parent?.classList.toggle('hidden', !shouldShow)
     })
 
     // 处理空分类

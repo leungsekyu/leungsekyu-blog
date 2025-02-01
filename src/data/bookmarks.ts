@@ -13,12 +13,12 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://faucet.n1stake.com/',
       name: 'Sui Testnet Faucet',
-      tags: ['区块链', '开发工具'],
+      tags: ['Sui', '测试网', '水龙头'],
     },
     {
       site: 'https://github.com/move-cn/letsmove',
       name: 'letsmove',
-      tags: ['区块链', 'Move', '开发工具'],
+      tags: ['Sui', 'Move', '学习'],
     },
   ],
   文献类网站: [

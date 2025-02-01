@@ -13,21 +13,36 @@ const iconUrl = `${url.protocol}//${url.hostname}/favicon.ico`
 ---
 
 <div class="bookmark-item">
-  <a href={site} data-tags={JSON.stringify(tags)} class="block rounded p-2 transition-colors hover:bg-gray-100">
-    {name}
-  </a>
-  {
-    tags.length > 0 && (
-      <div class="ml-2 mt-1 flex flex-wrap gap-1">
-        {tags.map((tag) => (
+  <div class="flex items-center gap-2">
+    <a
+      class="flex items-center gap-2 text-black hover:text-gray-600 hover:underline"
+      href={site}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={site}
+      aria-label={`访问 ${name} (在新窗口打开)`}
+      data-tags={JSON.stringify(tags)}
+    >
+      <img
+        src={iconUrl}
+        alt={`${name} 网站图标`}
+        width="16"
+        height="16"
+        loading="lazy"
+        onerror="this.onerror=null; this.src='/favicon/favicon.svg';"
+      />
+      <span>{name}</span>
+    </a>
+    {
+      tags.length > 0 &&
+        tags.map((tag) => (
           <button
-            class="tag-button rounded-full bg-gray-200 px-2 py-0.5 text-sm transition-colors hover:bg-gray-300"
+            class="tag-button inline-flex cursor-pointer items-center rounded-full border border-black bg-white px-2 py-0.5 text-xs transition-colors"
             data-tag={tag}
           >
             {tag}
           </button>
-        ))}
-      </div>
-    )
-  }
+        ))
+    }
+  </div>
 </div>

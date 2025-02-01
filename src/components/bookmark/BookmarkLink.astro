@@ -15,7 +15,7 @@ const iconUrl = `${url.protocol}//${url.hostname}/favicon.ico`
 <div class="bookmark-item">
   <div class="flex items-center gap-2">
     <a
-      class="flex items-center gap-2 text-black hover:text-gray-600 hover:underline"
+      class="text-size-lg flex items-center gap-2 text-black hover:text-gray-600 hover:underline"
       href={site}
       target="_blank"
       rel="noopener noreferrer"
@@ -37,7 +37,7 @@ const iconUrl = `${url.protocol}//${url.hostname}/favicon.ico`
       tags.length > 0 &&
         tags.map((tag) => (
           <button
-            class="tag-button hover:bg-blue inline-flex cursor-pointer items-center rounded-full border border-black bg-white px-2 py-0.5 text-xs transition-all duration-500 ease-in-out"
+            class="text-size-sm tag-button [@media(hover:hover)]:hover:bg-blue inline-flex cursor-pointer items-center rounded-full border border-black bg-white px-2 py-0.5 text-xs"
             data-tag={tag}
           >
             {tag}

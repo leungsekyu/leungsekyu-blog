@@ -1,31 +1,19 @@
 ---
-const socials = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/leungsekyu',
-    icon: 'i-grommet-icons-github',
-  },
-  {
-    name: '小红书',
-    url: 'https://www.xiaohongshu.com/user/profile/64b3094b000000000b015d2b',
-    icon: 'i-simple-icons-xiaohongshu',
-  },
-  { name: 'RSS', url: '/rss.xml', icon: 'i-grommet-icons-rss' },
-]
+import { desktopSocials } from '@data/socials'
 ---
 
 {
-  socials.map((item) => (
+  desktopSocials.map((social) => (
     <li>
       <a
         class="hover:text-green transition-all duration-150 ease-in-out"
-        href={item.url}
+        href={social.url}
         target="_blank"
         rel="noopener noreferrer"
-        title={item.name === 'RSS' ? '本站RSS订阅源' : `我的${item.name}`}
-        aria-label={item.name === 'RSS' ? '订阅本站RSS源' : `访问我的${item.name}`}
+        title={social.name === 'RSS' ? '本站RSS订阅源' : `我的${social.name}`}
+        aria-label={social.name === 'RSS' ? '订阅本站RSS源' : `访问我的${social.name}`}
       >
-        <div class:list={[item.icon, item.name === '小红书' ? 'p-6' : 'p-3']} />
+        <div class:list={[social.icon, social.name === '小红书' ? 'p-6' : 'p-3']} />
       </a>
     </li>
   ))

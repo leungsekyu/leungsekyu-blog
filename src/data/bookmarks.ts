@@ -30,6 +30,11 @@ export const bookmarks: BookmarkGroups = {
   ],
   Astro: [
     {
+      site: 'https://github.com/eliancodes/brutal',
+      name: 'Brutal',
+      tags: ['Brutal'],
+    },
+    {
       site: 'https://github.com/ElianCodes/brutal-ui/blob/main/src/components/Pill.astro',
       name: 'Brutal UI → Pill',
       tags: ['Brutal'],

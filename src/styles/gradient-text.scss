@@ -1,0 +1,6 @@
+.gradient-text {
+  background: linear-gradient(95deg, #0090f7, #ba62fc, #f2416b, #f55600);
+  background-clip: text;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  line-height: 1.3;
+}

@@ -1,0 +1,24 @@
+---
+title: 游乐场 | CSS
+description: 记录一些有趣的 CSS 尝试
+author: 'leungsekyu'
+publishedAt: 2025-02-03 06:24
+tags:
+  - CSS
+imgUrl: 'https://www.securemac.com/wp-content/uploads/2024/06/ai.jpg'
+---
+
+# 1. 渐变文本
+
+import '@styles/gradient-text.scss'
+
+<div class="gradient-text text-5xl">Apple Intelligence</div>
+
+```css
+.gradient-text {
+  background: linear-gradient(95deg, #0090f7, #ba62fc, #f2416b, #f55600);
+  background-clip: text;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  line-height: 1.3;
+}
+```

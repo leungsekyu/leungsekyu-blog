@@ -1,8 +1,9 @@
-import { defineConfig, presetWind, presetIcons, presetTypography } from 'unocss'
+import { defineConfig, presetWind, presetTypography, presetIcons } from 'unocss'
 
 export default defineConfig({
   presets: [
     presetWind(),
+    presetTypography(),
     presetIcons({
       collections: {
         grommet: async () => {
@@ -19,6 +20,5 @@ export default defineConfig({
         },
       },
     }),
-    presetTypography(),
   ],
 })

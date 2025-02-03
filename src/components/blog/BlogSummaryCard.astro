@@ -33,7 +33,7 @@ const { post } = Astro.props;
     <p class="poppins mt-2">标签：</p>
     <ul class="mt-2 flex flex-wrap items-center gap-4">
       {
-        post.data.tags.map((tag) => {
+        post.data.tags.map((tag: string) => {
           return (
             <li>
               <a class="sanchez" href={`/blog/tags/${tag.toLowerCase()}/`} title={`分类：${tag}`} aria-label={`访问分类：${tag}`}>

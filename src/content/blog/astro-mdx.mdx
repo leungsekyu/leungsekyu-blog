@@ -3,47 +3,127 @@ title: 游乐场 | Astro MDX
 description: 记录一些 Astro MDX 尝试
 author: leungsekyu
 publishedAt: 2025-01-23 02:21
-updatedAt: 2025-02-04 04:34
+updatedAt: 2025-02-04 06:13
 tags:
   - Astro
   - MDX
 imgUrl: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/0*RlWLpB_2pBQ4F3gu'
 ---
 
+import Link from '@components/blog/Link.astro'
+
 # {frontmatter.title}
 
-## 标题
+## 1. Frontmatter 变量
+
+本文章的标题是 `游乐场 | Astro MDX`，使用 `frontmatter.title` 获取。
 
 ```mdx
-// 游乐场 | Astro MDX
-
 # {frontmatter.title}
 ```
 
-[Astro → 在 MDX 中使用 Frontmatter 变量](https://docs.astro.build/zh-cn/guides/integrations-guide/mdx/#%E5%9C%A8-mdx-%E4%B8%AD%E4%BD%BF%E7%94%A8-frontmatter-%E5%8F%98%E9%87%8F)
+<Link
+  site="https://docs.astro.build/zh-cn/guides/integrations-guide/mdx/#%E5%9C%A8-mdx-%E4%B8%AD%E4%BD%BF%E7%94%A8-frontmatter-%E5%8F%98%E9%87%8F"
+  name="在 MDX 中使用 Frontmatter 变量"
+  favicon="https://leungsekyu.com/icons/bookmarks/astro.svg"
+  first={true}
+/>
 
-## 图标
+## 2. 纯 CSS 图标
 
-<div class="i-logos-mdx h-24 w-24"></div>
+在 MDX 中允许使用 `div` 标签，并且 UnoCSS 和它的预设图标仍能正常使用！
+
+<div class="i-logos-mdx w-26 h-26 -mt-7 -mb-6"></div>
 
 ```html
-<div class="i-logos-mdx h-24 w-24"></div>
+<div class="i-logos-mdx w-26 h-26 -mt-7 -mb-6"></div>
 ```
 
-[UnoCSS → Icons preset](https://unocss.dev/presets/icons#icons-preset)  
-[Icônes → SVG Logos](https://icones.js.org/collection/logos)
+```ts
+import { defineConfig, presetWind, presetTypography, presetIcons } from 'unocss'
 
-## 流程图
+export default defineConfig({
+  presets: [
+    presetWind(),
+    presetTypography(),
+    presetIcons({
+      collections: {
+        logos: async () => {
+          const icons = await import('@iconify-json/logos/icons.json')
+          return icons.default
+        },
+      },
+    }),
+  ],
+})
+```
+
+<Link
+  site="https://unocss.dev/presets/icons#icons-preset"
+  name="Icons preset"
+  first={true}
+/>
+<Link
+  site="https://icones.js.org/collection/logos"
+  name="SVG Logos"
+  favicon="https://leungsekyu.com/icons/bookmarks/icônes.svg"
+/>
+
+## 3. Mermaid 图表（Markdown 中也能使用）
+
+已知问题：使用 `remark-mermaidjs` 插件渲染时，中文和 Emoji 会在部署后出现渲染不全的情况。
+
+> 未知是否与部署环境服务器（本网站部署于 Netlify）有关，在本地使用 remark-mermaidjs 插件渲染时，
+> 中文和 Emoji 均能正常显示。
+
+### 对比
+
+#### 中文（使用 remark-mermaidjs 插件渲染）
 
 ```mermaid
 graph LR
-  A[Cat 🐱] --> B[Cat Pro Max 🐯]
+  A[猫 🐱] --> B[老虎 🐯]
+```
+
+#### 中文（使用 Mermaid Live Editor 导出 SVG）
+
+![](../../assets/mermaid-cat-tiger.svg)
+
+````mdx
+```mermaid
+%%{init: {'look': 'handDrawn'}}%%
+graph LR
+  A[猫 🐱] --> B[老虎 🐯]
+```
+````
+
+#### 英文（使用 remark-mermaidjs 插件渲染）
+
+```mermaid
+graph LR
+  A[Cat] --> B[Cat Pro Max]
 ```
 
 ````mdx
 ```mermaid
 %%{init: {'look': 'handDrawn'}}%%
 graph LR
-  A[Cat 🐱] --> B[Cat Pro Max 🐯]
+  A[Cat] --> B[Cat Pro Max]
 ```
 ````
+
+### 踩坑经过
+
+其实 Mermaid 图表最简单的用法是在 Mermaid Live Editor 中编辑，然后在左下方的 Action 折叠栏中
+选择下载 SVG 图片或者直接使用生成的 SVG URL
+
+待续 ...  
+(Markdown Remark 插件的配置)  
+(Markdown Remark 插件的链接)  
+(Playwright 的安装)
+
+<Link
+  site="https://mermaid.live/edit"
+  name="Mermaid Live Editor"
+  first={true}
+/>

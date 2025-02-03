@@ -33,13 +33,25 @@ export const bookmarks: BookmarkGroups = {
   Astro: [
     {
       site: 'https://docs.astro.build/zh-cn/getting-started/',
-      name: 'Astro',
-      tags: ['文档'],
+      name: 'Astro → 文档',
+      tags: ['Astro'],
+      favicon: `https://leungsekyu.com/icons/bookmarks/astro.svg`,
+    },
+    {
+      site: 'https://docs.astro.build/zh-cn/recipes/external-links/',
+      name: 'Astro → Markdown 外部链接图标',
+      tags: ['Astro'],
+      favicon: `https://leungsekyu.com/icons/bookmarks/astro.svg`,
+    },
+    {
+      site: 'https://docs.astro.build/zh-cn/recipes/i18n/',
+      name: 'Astro → i18n',
+      tags: ['Astro', 'TODO'],
       favicon: `https://leungsekyu.com/icons/bookmarks/astro.svg`,
     },
     {
       site: 'https://icones.js.org/collection/logos',
-      name: 'Icônes → SVG Logos',
+      name: 'Icônes | SVG Logos',
       tags: ['图标'],
       favicon: 'https://leungsekyu.com/icons/bookmarks/icônes.svg',
     },
@@ -56,7 +68,7 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://pagespeed.web.dev/',
       name: 'PageSpeed Insights',
-      tags: ['网站性能'],
+      tags: ['Google', '网站性能'],
       favicon: 'https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png',
     },
   ],

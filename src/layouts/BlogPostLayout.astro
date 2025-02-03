@@ -26,6 +26,6 @@ const { author, publishedAt, updatedAt, headings, description, title } = Astro.p
     </BlogContent>
   </main>
   <section class="p-6">
-    <RecentBlogPosts count={6} currentSlug={Astro.params.slug} />
+    <RecentBlogPosts count={6} currentId={Astro.params.id} />
   </section>
 </DefaultLayout>

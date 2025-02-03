@@ -6,16 +6,16 @@ import BlogList from '../blog/BlogList.astro'
 
 interface Props {
   count?: number
-  currentSlug?: string
+  currentId?: string
   pageColor?: string
 }
 
-const { count, currentSlug, pageColor } = Astro.props
+const { count, currentId, pageColor } = Astro.props
 
 const posts = (
   await getCollection('blog', ({ id }) => {
-    if (currentSlug) {
-      return id !== currentSlug
+    if (currentId) {
+      return id !== currentId
     }
     return true
   })

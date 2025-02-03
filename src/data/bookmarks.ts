@@ -2,6 +2,7 @@ interface Bookmark {
   name: string
   site: string
   tags?: string[]
+  favicon?: string
 }
 
 interface BookmarkGroups {
@@ -38,6 +39,12 @@ export const bookmarks: BookmarkGroups = {
       site: 'https://github.com/ElianCodes/brutal-ui/blob/main/src/components/Pill.astro',
       name: 'Brutal UI → Pill',
       tags: ['Brutal'],
+    },
+    {
+      site: 'https://pagespeed.web.dev/',
+      name: 'PageSpeed Insights',
+      tags: ['网站性能'],
+      favicon: 'https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png',
     },
   ],
 }

@@ -3,13 +3,14 @@ interface Props {
   site: string
   name: string
   tags?: string[]
+  favicon?: string
 }
 
-const { site, name, tags = [] } = Astro.props
+const { site, name, tags = [], favicon } = Astro.props
 
 // 从 URL 中提取主域名
 const url = new URL(site)
-const iconUrl = `${url.protocol}//${url.hostname}/favicon.ico`
+const iconUrl = favicon || `${url.protocol}//${url.hostname}/favicon.ico`
 ---
 
 <div class="bookmark-item">

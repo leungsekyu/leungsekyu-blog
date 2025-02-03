@@ -27,6 +27,7 @@
     "astro": "^5.1.8",
     "astro-font": "^0.0.80",
     "nanostores": "^0.11.3",
+    "rehype-external-links": "^3.0.0",
     "remark-mermaidjs": "^7.0.0"
   },
   "devDependencies": {

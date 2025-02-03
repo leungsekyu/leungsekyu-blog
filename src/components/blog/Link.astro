@@ -1,0 +1,35 @@
+---
+interface Props {
+  site: string
+  name: string
+  favicon?: string
+  first?: boolean
+}
+
+const { site, name, favicon, first = false } = Astro.props
+
+const url = new URL(site)
+const iconUrl = favicon || `${url.protocol}//${url.hostname}/favicon.ico`
+---
+
+<div class={`inline-block rounded-lg border border-black px-2 py-1 ${!first ? 'mt-3' : 'mt-1'}`}>
+  <a
+    class="flex items-center gap-2 no-underline hover:text-gray-600 hover:underline"
+    href={site}
+    target="_blank"
+    rel="noopener noreferrer nofollow"
+    title={site}
+    aria-label={`访问 ${name} (在新窗口打开)`}
+  >
+    <img
+      src={iconUrl}
+      alt={`${name} 网站图标`}
+      width="16"
+      height="16"
+      loading="lazy"
+      onerror="this.onerror=null; this.src='/favicon/favicon.svg';"
+    />
+    <span class="">{name} 🔗</span>
+  </a>
+</div>
+<br />

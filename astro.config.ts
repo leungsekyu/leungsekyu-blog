@@ -29,6 +29,13 @@ export default defineConfig({
         },
       ],
     ],
-    rehypePlugins: [rehypeExternalLinks],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          content: { type: 'text', value: ' 🔗' },
+        },
+      ],
+    ],
   },
 })

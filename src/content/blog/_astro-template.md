@@ -3,6 +3,7 @@ title: Astro 模板
 description: placeholder
 author: leungsekyu
 publishedAt: 2025-01-22 21:06
+updatedAt: 2025-02-04 04:34
 tags:
   - Astro
   - Markdown
@@ -35,5 +36,7 @@ _斜体_
 // 代码
 console.log('hello world')
 ```
+
+`console.log('hello world')`
 
 > 引用

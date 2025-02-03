@@ -5,18 +5,9 @@
 - 博客文章自动插入作者、创作时间和更新时间（git pre-commit hook）
 - 在服务器端渲染博客文章内 Mermaid 图表（remark-mermaidjs + Playwright）
 - 使用 Astro Sitemap 提高网站 SEO
-
-## 交互
-
-### TODO
-
-- 颂钵 🛎️（需尝试 Spline / Three.js）
+- 使用 MDX，提高博客文章的交互性
 
 ## 待研究
-
-### 网站性能
-
-- [PageSpeed Insights](https://pagespeed.web.dev/)
 
 ### RSS
 
@@ -27,4 +18,3 @@
 ### Open Graph
 
 - 微信朋友圈缩略图卡片
-- 在 public 文件夹新增了个人头像（尺寸过大，可能会影响访问速度）

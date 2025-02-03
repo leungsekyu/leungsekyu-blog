@@ -15,6 +15,7 @@ export const bookmarks: BookmarkGroups = {
       site: 'https://faucet.n1stake.com/',
       name: 'Sui Testnet Faucet',
       tags: ['水龙头'],
+      favicon: 'https://leungsekyu.com/icons/bookmarks/sui-testnet-faucet.ico',
     },
     {
       site: 'https://github.com/move-cn/letsmove',
@@ -30,6 +31,18 @@ export const bookmarks: BookmarkGroups = {
     },
   ],
   Astro: [
+    {
+      site: 'https://docs.astro.build/zh-cn/getting-started/',
+      name: 'Astro',
+      tags: ['文档'],
+      favicon: `https://leungsekyu.com/icons/bookmarks/astro.svg`,
+    },
+    {
+      site: 'https://icones.js.org/collection/logos',
+      name: 'Icônes → SVG Logos',
+      tags: ['图标'],
+      favicon: 'https://leungsekyu.com/icons/bookmarks/icônes.svg',
+    },
     {
       site: 'https://github.com/eliancodes/brutal',
       name: 'Brutal',

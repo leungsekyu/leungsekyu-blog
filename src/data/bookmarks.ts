@@ -23,12 +23,6 @@ export const bookmarks: BookmarkGroups = {
       tags: ['学习'],
     },
   ],
-  文献类网站: [
-    {
-      site: 'https://pss-system.cponline.cnipa.gov.cn/conventionalSearch',
-      name: '专利检索及分析',
-    },
-  ],
   Astro: [
     {
       site: 'https://docs.astro.build/zh-cn/getting-started/',
@@ -64,6 +58,12 @@ export const bookmarks: BookmarkGroups = {
       name: 'PageSpeed Insights',
       tags: ['网站性能'],
       favicon: 'https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png',
+    },
+  ],
+   文献类网站: [
+    {
+      site: 'https://pss-system.cponline.cnipa.gov.cn/conventionalSearch',
+      name: '专利检索及分析',
     },
   ],
 }

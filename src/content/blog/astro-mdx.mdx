@@ -3,7 +3,7 @@ title: 游乐场 | Astro MDX
 description: 记录一些 Astro MDX 尝试
 author: leungsekyu
 publishedAt: 2025-01-23 02:21
-updatedAt: 2025-02-04 06:13
+updatedAt: 2025-02-07 02:27
 tags:
   - Astro
   - MDX
@@ -16,10 +16,12 @@ import Link from '@components/blog/Link.astro'
 
 ## 1. Frontmatter 变量
 
-本文章的标题是 `游乐场 | Astro MDX`，使用 `frontmatter.title` 获取。
+本篇文章的标题是 `游乐场 | Astro MDX`，可以通过 `frontmatter.title` 获取。
+
+> 标题：**{frontmatter.title}**
 
 ```mdx
-# {frontmatter.title}
+标题：**{frontmatter.title}**
 ```
 
 <Link
@@ -31,15 +33,34 @@ import Link from '@components/blog/Link.astro'
 
 ## 2. 纯 CSS 图标
 
-在 MDX 中允许使用 `div` 标签，并且 UnoCSS 和它的预设图标仍能正常使用！
+在 **MDX** 中允许使用 `div` 元素，并且 **UnoCSS** 可以正常工作，因此可以正常使用在 `uno.config.ts` 里配置的图标集（配置方法请参考下方代码及链接）。
 
-<div class="i-logos-mdx w-26 h-26 -mt-7 -mb-6"></div>
+1. 使用 `pnpm` 安装 **Astro** 的 **UnoCSS** 集成和 `@iconify-json/logos` 图标集：
 
-```html
-<div class="i-logos-mdx w-26 h-26 -mt-7 -mb-6"></div>
+```zsh
+pnpm add -D unocss @iconify-json/logos
 ```
 
+2. 配置 `astro.config.ts`：
+
 ```ts
+// astro.config.ts
+import { defineConfig } from 'astro/config'
+import UnoCSS from 'unocss/astro'
+
+export default defineConfig({
+  integrations: [
+    UnoCSS({
+      injectReset: true
+    }),
+  ],
+})
+```
+
+3. 配置 `uno.config.ts`：
+
+```ts
+// uno.config.ts
 import { defineConfig, presetWind, presetTypography, presetIcons } from 'unocss'
 
 export default defineConfig({
@@ -58,23 +79,49 @@ export default defineConfig({
 })
 ```
 
+4. 在 **MDX** 文件中使用：
+
+```mdx
+<div class="i-logos-mdx w-26 h-26 -mt-6 -mb-5"></div>
+```
+
+5. 效果：
+
+<div class="i-logos-mdx w-26 h-26 -mt-6 -mb-5"></div>
+
+<Link
+  site="https://unocss.dev/integrations/astro"
+  name="Astro Integration"
+  first={true}
+/>
 <Link
   site="https://unocss.dev/presets/icons#icons-preset"
   name="Icons preset"
-  first={true}
 />
 <Link
   site="https://icones.js.org/collection/logos"
   name="SVG Logos"
   favicon="https://leungsekyu.com/icons/bookmarks/icônes.svg"
 />
+<Link
+  site="https://icones.js.org/collection/logos?s=mdx&icon=logos:mdx"
+  name="logos:mdx"
+  favicon="https://leungsekyu.com/icons/bookmarks/icônes.svg"
+/>
 
-## 3. Mermaid 图表（Markdown 中也能使用）
+## 3. Mermaid 图表（在 Markdown 文件中也能使用！）
 
-已知问题：使用 `remark-mermaidjs` 插件渲染时，中文和 Emoji 会在部署后出现渲染不全的情况。
+### 用法1：使用 `remark-mermaidjs` 插件 + `Playwright` 渲染（推荐）
 
-> 未知是否与部署环境服务器（本网站部署于 Netlify）有关，在本地使用 remark-mermaidjs 插件渲染时，
-> 中文和 Emoji 均能正常显示。
+> ⚠️ 已知问题：在 **Netlify** 部署后会出现中文和 **Emoji** 渲染不全的情况，在本地开发环境（**macOS 15.1.1**）均能正常显示。
+
+<Link
+  site="https://github.com/remcohaszing/remark-mermaidjs"
+  name="remark-mermaidjs"
+  first={true}
+/>
+
+### 用法2：使用 Mermaid Live Editor 导出 SVG
 
 ### 对比
 

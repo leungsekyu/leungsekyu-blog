@@ -9,8 +9,6 @@ $secondary: $sys-color-black;
 // 滚动条尺寸
 $scrollbar-width-vertical: 22;
 $scrollbar-button-height-vertical: 24;
-$scrollbar-height-horizontal: 16;
-$scrollbar-button-width-horizontal: 16;
 
 // 棋盘格纹理
 $checker-linear-gradient: linear-gradient(
@@ -25,12 +23,11 @@ $checker-linear-gradient: linear-gradient(
 // 滚动条
 ::-webkit-scrollbar {
   width: #{$scrollbar-width-vertical}px;
-  height: #{$scrollbar-height-horizontal}px;
   background-color: $primary;
 }
 
 // 滚动条轨道
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track:vertical {
   background: $checker-linear-gradient, $checker-linear-gradient;
   background: {
     size: 4px 4px;
@@ -49,13 +46,15 @@ $checker-linear-gradient: linear-gradient(
 
 // 滚动条按钮
 ::-webkit-scrollbar-button {
-  &:vertical,
-  &:horizontal {
+  &:vertical {
     &:start:decrement,
     &:end:increment {
       display: block;
       height: #{$scrollbar-button-height-vertical}px;
-      width: #{$scrollbar-button-width-horizontal}px;
+    }
+    &:start:increment,
+    &:end:decrement {
+      display: none;
     }
     &:vertical:start {
       background-image: url(@icons/scrollbar/vertical/up-#{$scrollbar-width-vertical}x#{$scrollbar-button-height-vertical}.svg);
@@ -68,18 +67,6 @@ $checker-linear-gradient: linear-gradient(
     }
     &:vertical:end:active {
       background-image: url(@icons/scrollbar/vertical/down-active-#{$scrollbar-width-vertical}x#{$scrollbar-button-height-vertical}.svg);
-    }
-    &:horizontal:start {
-      background-image: url(@icons/scrollbar/horizontal/left-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
-    }
-    &:horizontal:start:active {
-      background-image: url(@icons/scrollbar/horizontal/left-active-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
-    }
-    &:horizontal:end {
-      background-image: url(@icons/scrollbar/horizontal/right-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
-    }
-    &:horizontal:end:active {
-      background-image: url(@icons/scrollbar/horizontal/right-active-#{$scrollbar-height-horizontal}x#{$scrollbar-button-width-horizontal}.svg);
     }
   }
 }

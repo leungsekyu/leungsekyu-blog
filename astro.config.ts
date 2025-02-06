@@ -26,6 +26,9 @@ export default defineConfig({
         {
           mermaidConfig: {
             look: 'handDrawn',
+            flowchart: {
+              useMaxWidth: true, // 自动适应最大宽度
+            },
           },
         },
       ],

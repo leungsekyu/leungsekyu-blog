@@ -1,5 +1,5 @@
 {
-  "build": {
-    "commands": ["pnpm exec playwright install-dep"]
+  "hooks": {
+    "postinstall": "pnpm exec playwright install-dep"
   }
 }

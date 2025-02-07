@@ -1,7 +1,11 @@
 FROM node:lts AS build
 WORKDIR /app
 COPY . .
+ENV PNPM_HOME=/usr/local/share/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+
 RUN npm install -g pnpm
+RUN pnpm setup
 RUN pnpm add -g pnpm@latest
 RUN pnpm install
 RUN pnpm exec playwright install --with-deps chromium

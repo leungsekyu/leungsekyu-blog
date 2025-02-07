@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "pnpm exec playwright install-dep",
+    "prebuild": "pnpm exec playwright install-dep chromium",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

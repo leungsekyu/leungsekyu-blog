@@ -1,5 +1,0 @@
-{
-  "hooks": {
-    "postinstall": "pnpm exec playwright install-dep"
-  }
-}

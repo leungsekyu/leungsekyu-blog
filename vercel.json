@@ -1,0 +1,5 @@
+{
+  "build": {
+    "commands": ["pnpm exec playwright install-dep"]
+  }
+}

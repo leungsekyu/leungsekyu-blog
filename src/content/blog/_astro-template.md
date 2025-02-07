@@ -3,11 +3,11 @@ title: Astro 模板
 description: placeholder
 author: leungsekyu
 publishedAt: 2025-01-22 21:06
-updatedAt: 2025-02-04 04:34
+updatedAt: 2025-02-08 04:24
 tags:
   - Astro
   - Markdown
-imgUrl: '../../assets/astro.jpeg'
+imgUrl: '@assets/astro.jpeg'
 ---
 
 # 标题 1

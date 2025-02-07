@@ -24,7 +24,9 @@ export default defineConfig({
       [
         remarkMermaid,
         {
-          mermaidConfig: {},
+          mermaidConfig: {
+            look: 'handDrawn',
+          },
         },
       ],
     ],

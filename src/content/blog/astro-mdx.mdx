@@ -3,11 +3,11 @@ title: 游乐场 | Astro MDX
 description: 记录一些 Astro MDX 尝试
 author: leungsekyu
 publishedAt: 2025-01-23 02:21
-updatedAt: 2025-02-08 03:44
+updatedAt: 2025-02-08 04:24
 tags:
   - Astro
   - MDX
-imgUrl: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/0*RlWLpB_2pBQ4F3gu'
+imgUrl: '@assets/mdx.webp'
 ---
 
 import Link from '@components/blog/Link.astro'
@@ -51,7 +51,7 @@ import UnoCSS from 'unocss/astro'
 export default defineConfig({
   integrations: [
     UnoCSS({
-      injectReset: true
+      injectReset: true,
     }),
   ],
 })
@@ -82,22 +82,15 @@ export default defineConfig({
 4. 在 **MDX** 文件中使用：
 
 ```mdx
-<div class="i-logos-mdx w-26 h-26 -mt-6 -mb-5"></div>
+<div class="i-logos-mdx w-26 h-26 -mb-5 -mt-6"></div>
 ```
 
 5. 效果：
 
-<div class="i-logos-mdx w-26 h-26 -mt-6 -mb-5"></div>
+<div class="i-logos-mdx w-26 h-26 -mb-5 -mt-6"></div>
 
-<Link
-  site="https://unocss.dev/integrations/astro"
-  name="Astro Integration"
-  first={true}
-/>
-<Link
-  site="https://unocss.dev/presets/icons#icons-preset"
-  name="Icons preset"
-/>
+<Link site="https://unocss.dev/integrations/astro" name="Astro Integration" first={true} />
+<Link site="https://unocss.dev/presets/icons#icons-preset" name="Icons preset" />
 <Link
   site="https://icones.js.org/collection/logos"
   name="SVG Logos"
@@ -115,11 +108,7 @@ export default defineConfig({
 
 > ⚠️ 已知问题：在 **Netlify** 部署后会出现中文和 **Emoji** 渲染不全的情况，在本地开发环境（**macOS 15.1.1**）均能正常显示。
 
-<Link
-  site="https://github.com/remcohaszing/remark-mermaidjs"
-  name="remark-mermaidjs"
-  first={true}
-/>
+<Link site="https://github.com/remcohaszing/remark-mermaidjs" name="remark-mermaidjs" first={true} />
 
 ### 用法2：使用 Mermaid Live Editor 导出 SVG
 
@@ -132,11 +121,9 @@ graph LR
   A[猫 🐱] --> B[老虎 🐯]
 ```
 
-#### 中文（使用 Mermaid Live Editor 导出 SVG）
+#### 中文（使用 Mermaid Live Editor 导出本地 SVG）
 
 ![](../../assets/mermaid-cat-tiger.svg)
-
-![](https://mermaid.ink/svg/pako:eNqrVkrOT0lVslJKL0osyFDwCYrJU1BwjH7es1rhw_wJG2MVdHXtFJyiXzQ0vpjZBxJaHwtSoaSjlJtalJuYmQLUWg0SiVEqyUjNTY1RsgIyU1LTEktzSmKUYvJqgUoTS0vygyvzkpWsSopKU3WUivJL0zOUrNISc4qBvNKClMSSVJfMRKATcuGiBYl5Ufn5MH4tAG51PPw)
 
 ````mdx
 ```mermaid
@@ -151,6 +138,11 @@ graph LR
 ```mermaid
 graph LR
   A[Cat] --> B[Cat Pro Max]
+```
+
+```mermaid
+graph LR
+  A[Cat 🐱] --> B[Cat Pro Max 🐯]
 ```
 
 ````mdx
@@ -171,8 +163,4 @@ graph LR
 (Markdown Remark 插件的链接)  
 (Playwright 的安装)
 
-<Link
-  site="https://mermaid.live/edit"
-  name="Mermaid Live Editor"
-  first={true}
-/>
+<Link site="https://mermaid.live/edit" name="Mermaid Live Editor" first={true} />

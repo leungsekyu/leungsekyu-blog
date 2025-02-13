@@ -15,7 +15,7 @@ export const bookmarks: BookmarkGroups = {
       site: 'https://faucet.n1stake.com/',
       name: 'Sui Testnet Faucet',
       tags: ['水龙头'],
-      favicon: 'https://leungsekyu.com/icons/bookmarks/sui-testnet-faucet.ico',
+      favicon: '/icons/bookmarks/sui-testnet-faucet.ico',
     },
     {
       site: 'https://github.com/move-cn/letsmove',
@@ -27,23 +27,23 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://docs.astro.build/zh-cn/getting-started/',
       name: 'Astro → 文档',
-      favicon: `https://leungsekyu.com/icons/bookmarks/astro.svg`,
+      favicon: `/icons/bookmarks/astro.svg`,
     },
     {
       site: 'https://docs.astro.build/zh-cn/recipes/external-links/',
       name: 'Astro → Markdown 外部链接图标',
-      favicon: `https://leungsekyu.com/icons/bookmarks/astro.svg`,
+      favicon: `/icons/bookmarks/astro.svg`,
     },
     {
       site: 'https://docs.astro.build/zh-cn/recipes/i18n/',
       name: 'Astro → i18n',
       tags: ['TODO'],
-      favicon: `https://leungsekyu.com/icons/bookmarks/astro.svg`,
+      favicon: `/icons/bookmarks/astro.svg`,
     },
     {
       site: 'https://icones.js.org/collection/logos',
       name: 'Icônes → SVG Logos',
-      favicon: 'https://leungsekyu.com/icons/bookmarks/icônes.svg',
+      favicon: '/icons/bookmarks/icônes.svg',
     },
     {
       site: 'https://github.com/eliancodes/brutal',

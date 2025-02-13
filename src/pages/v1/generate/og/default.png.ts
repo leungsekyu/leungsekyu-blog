@@ -23,7 +23,7 @@ const width = 1200
 
 export const GET: APIRoute = async () => {
   const link = 'https://leungsekyu.com'
-  const avatar = '/avatar/leungsekyu.jpg'
+  const avatar = 'https://leungsekyu.com/avatar/leungsekyu.jpg'
   const html = toReactElement(`
   <div class="bg-white flex flex-col h-full p-12 w-full">
     <div class="flex h-full w-full bg-white border-[6px] border-black rounded-lg p-8 shadow-lg">

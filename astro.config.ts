@@ -8,7 +8,16 @@ import rehypeExternalLinks from 'rehype-external-links'
 
 export default defineConfig({
   site: 'https://leungsekyu.com/',
-  integrations: [sitemap(), unocss({ injectReset: true }), expressiveCode(), mdx()],
+
+  integrations: [
+    sitemap(),
+    unocss({
+      injectReset: true,
+    }),
+    expressiveCode(),
+    mdx(),
+  ],
+
   vite: {
     resolve: {
       alias: {
@@ -19,6 +28,7 @@ export default defineConfig({
       exclude: ['@resvg/resvg-js'],
     },
   },
+
   markdown: {
     remarkPlugins: [
       [
@@ -34,7 +44,10 @@ export default defineConfig({
       [
         rehypeExternalLinks,
         {
-          content: { type: 'text', value: ' 🔗' },
+          content: {
+            type: 'text',
+            value: ' 🔗',
+          },
         },
       ],
     ],

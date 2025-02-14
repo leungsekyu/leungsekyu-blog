@@ -3,7 +3,7 @@ title: 游乐场 | Astro MDX
 description: 记录一些 Astro MDX 尝试
 author: leungsekyu
 publishedAt: 2025-01-23 02:21
-updatedAt: 2025-02-14 04:15
+updatedAt: 2025-02-14 20:50
 tags:
   - Astro
   - MDX
@@ -33,7 +33,7 @@ import Link from '@components/blog/Link.astro'
 
 ## 2. 纯 CSS 图标
 
-在 MDX 中允许使用 `div` 元素，并且 UnoCSS 可以正常工作，因此可以正常使用在 `uno.config.ts` 里配置的图标集（配置方法请参考下方代码及链接）。
+在 MDX 中允许使用 `div` 元素，并且 UnoCSS 可以正常工作，因此可以正常使用在 `uno.config.ts` 里注册的图标集（配置方法请参考下方代码及官方链接）。
 
 #### 1
 
@@ -53,7 +53,7 @@ pnpm add -D unocss
 pnpm add -D @unocss/reset
 ```
 
-2.2 在 `astro.config.ts` 中配置 UnoCSS 集成并重置浏览器样式
+2.2 在 `astro.config.ts` 中注册 UnoCSS 集成并重置浏览器样式
 
 ```ts
 // astro.config.ts
@@ -73,7 +73,7 @@ export default defineConfig({
 
 #### 3
 
-3.1 使用 `pnpm` 安装 `@iconify-json/logos` 图标集
+3.1 使用 `pnpm` 添加 `@iconify-json/logos` 图标集
 
 ```zsh
 pnpm add -D @iconify-json/logos
@@ -119,13 +119,13 @@ export default defineConfig({
 
 #### 4
 
-4.1 在 MDX 文件中使用
+在 MDX 文件中使用
 
 ```mdx
 <div class="i-logos-mdx w-26 h-26 -mb-8 -mt-8"></div>
 ```
 
-4.2 显示效果如下
+显示效果如下
 
 <div class="i-logos-mdx w-26 h-26 -mb-8 -mt-8"></div>
 
@@ -133,11 +133,13 @@ export default defineConfig({
 
 > 在 Markdown 文件中也能使用！
 
-### 用法1：使用 remark 插件 `remark-mermaidjs`（推荐）
+### 用法1：使用 remark 插件 `remark-mermaidjs`
+
+> ⭐️ 推荐：此用法生成的 Mermaid 图表文字可被选中复制，交互体验更好。
 
 #### 1
 
-使用 `pnpm` 安装 `remark-mermaidjs`
+使用 `pnpm` 添加 `remark-mermaidjs` remark 插件
 
 ```zsh
 pnpm add remark-mermaidjs
@@ -151,7 +153,7 @@ pnpm add remark-mermaidjs
 
 #### 2
 
-2.1 使用 `pnpm` 安装 `playwright`
+2.1 使用 `pnpm` 添加 `playwright` 自动化测试框架
 
 ```zsh
 pnpm add playwright
@@ -176,7 +178,7 @@ pnpm exec playwright install --with-deps chromium
 
 #### 3
 
-在 `astro.config.ts` 中注册并自定义 `remark-mermaidjs` remark 插件（自定义 Mermaid 图表使用手绘风格）
+在 `astro.config.ts` 中注册 `remark-mermaidjs` remark 插件并配置 Mermaid 图表使用手绘风格
 
 ```ts
 // astro.config.ts
@@ -214,8 +216,6 @@ export default defineConfig({
 **英文**
 
 ````mdx
-// en.mdx
-
 ```mermaid
 graph LR
   A[Cat] --> B[Cat Pro Max]
@@ -230,8 +230,6 @@ graph LR
 **简体中文**
 
 ````mdx
-// zh-CN.mdx
-
 ```mermaid
 graph LR
   A[猫] --> B[老虎]
@@ -246,8 +244,6 @@ graph LR
 **Emoji**
 
 ````mdx
-// emoji.mdx
-
 ```mermaid
 graph LR
   A[🐱] --> B[🐯]
@@ -262,8 +258,6 @@ graph LR
 **英文 + Emoji**
 
 ````mdx
-// en-emoji.mdx
-
 ```mermaid
 graph LR
   A[Cat 🐱] --> B[Cat Pro Max 🐯]
@@ -278,8 +272,6 @@ graph LR
 **简体中文 + Emoji**
 
 ````mdx
-// zh-CN-emoji.mdx
-
 ```mermaid
 graph LR
   A[猫 🐱] --> B[老虎 🐯]
@@ -293,12 +285,12 @@ graph LR
 
 > ⚠️ 已知问题：在 Netlify 部署后会出现中文和 Emoji 渲染不全的情况（本站部署在 Netlify 上），但在本地开发环境（macOS Sequoia 15.3.1）均能正常显示。
 
-> 💭 更新1：可能与 Netlify 用户没有权限安装 Playwright Chromium 浏览器相关操作系统依赖项有关，因为在 Koyeb 使用 Docker 部署（可以正常安装相关操作系统依赖项）后显示效果与本地开发环境一致。
+> 💭 更新1：可能与 Netlify 用户没有权限安装 Playwright Chromium 浏览器相关操作系统依赖项有关，因为在 Koyeb 使用 Docker 部署（可以正常安装依赖）后显示效果与本地开发环境一致，可点击下方链接查看 Koyeb 的部署效果。
 
 <div class="-mt-3">
   <Link
     site="https://leungsekyu.koyeb.app/blog/astro-mdx/"
-    name="leungsekyu → 游乐场 | Astro MDX（部署于 Koyeb）"
+    name="leungsekyu → 游乐场 | Astro MDX（部署在 Koyeb）"
     favicon="/favicon/favicon.svg"
   />
 </div>
@@ -309,7 +301,11 @@ graph LR
 
 <Link site="https://mermaid.live/edit/" name="Mermaid Live Editor" />
 
-编辑后可以在左下方的 Actions 折叠栏中选择导出 SVG 图片或者直接使用生成的 SVG 图片 URL
+> 🪧 提示：需要在桌面端浏览器打开
+
+#### 使用方法
+
+编辑图表后在左下方的 Actions 折叠栏中选择导出 SVG 图片或者直接使用生成的 SVG 图片 URL
 
 **英文**
 
@@ -377,8 +373,8 @@ graph LR
   />
 </div>
 
-> ⚠️ 已知问题：Mermaid Live Editor 导出的 SVG 图片在移动端会出现 Emoji 右侧有少许遮挡的情况，原因不明。
+> ⚠️ 已知问题：使用导出的 SVG 图片会在移动端出现 Emoji 右侧有少许遮挡的情况，原因不明。
 
 ### 总结
 
-无论使用哪种用法，均建议使用英文，兼容性最好。
+无论采用哪种用法，均建议使用英文，兼容性最好。

@@ -22,6 +22,12 @@ export const bookmarks: BookmarkGroups = {
       name: "Let's Move",
       tags: ['学习'],
     },
+    {
+      site: 'https://sui.io/developers#courses',
+      name: 'Learning resources',
+      tags: ['学习'],
+      favicon: 'https://docs.sui.io/img/favicon.ico',
+    },
   ],
   Astro: [
     {
@@ -60,7 +66,7 @@ export const bookmarks: BookmarkGroups = {
       favicon: 'https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png',
     },
   ],
-   文献类网站: [
+  文献类网站: [
     {
       site: 'https://pss-system.cponline.cnipa.gov.cn/conventionalSearch',
       name: '专利检索及分析',

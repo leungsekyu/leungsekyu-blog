@@ -12,14 +12,12 @@ interface Props {
 
 const { count, currentId, pageColor } = Astro.props
 
-const posts = (
-  await getCollection('blog', ({ id }) => {
-    if (currentId) {
-      return id !== currentId
-    }
-    return true
-  })
-).slice(0, count)
+const posts = await getCollection('blog', ({ id }) => {
+  if (currentId) {
+    return id !== currentId
+  }
+  return true
+})
 ---
 
 <section class="mt-8">

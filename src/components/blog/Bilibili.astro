@@ -1,0 +1,17 @@
+---
+interface Props {
+  url: string
+}
+
+const { url } = Astro.props
+---
+
+<iframe
+  src={`${url}&autoplay=0`}
+  title="Bilibili video player"
+  scrolling="no"
+  border="0"
+  frameborder="no"
+  framespacing="0"
+  allowfullscreen="true"
+  class="h-62 w-full md:h-[366.41px] md:w-[653.109px]"></iframe>

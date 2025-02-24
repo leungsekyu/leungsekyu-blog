@@ -44,6 +44,9 @@ importers:
       remark-mermaidjs:
         specifier: ^7.0.0
         version: 7.0.0(playwright@1.50.1)
+      swiper:
+        specifier: ^11.2.4
+        version: 11.2.4
     devDependencies:
       '@iconify-json/grommet-icons':
         specifier: ^1.2.1
@@ -3713,6 +3716,10 @@ packages:
   supports-color@8.1.1:
     resolution: {integrity: sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==}
     engines: {node: '>=10'}
+
+  swiper@11.2.4:
+    resolution: {integrity: sha512-DTtglrsFfMYytid+oNy4QI3t2N2+XhhwSYbnyOhlwBmvY8Bkoj3ombK1/b80w8vDpQ+Lqlnbm+0737+i32MrcA==}
+    engines: {node: '>= 4.7.0'}
 
   sync-child-process@1.0.2:
     resolution: {integrity: sha512-8lD+t2KrrScJ/7KXCSyfhT3/hRq78rC0wBFqNJXv3mZyn6hW2ypM05JmlSvtqRbeq6jqA94oHbxAr2vYsJ8vDA==}
@@ -8709,6 +8716,8 @@ snapshots:
   supports-color@8.1.1:
     dependencies:
       has-flag: 4.0.0
+
+  swiper@11.2.4: {}
 
   sync-child-process@1.0.2:
     dependencies:

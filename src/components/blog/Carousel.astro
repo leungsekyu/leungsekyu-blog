@@ -1,0 +1,106 @@
+---
+// Astro component frontmatter
+// 在组件的 frontmatter 中接收一个唯一的 id
+import astrojpg from '@assets/astro.jpg'
+import thayWalkingMeditation from '@assets/thay-walking-meditation.webp'
+import { Image } from 'astro:assets'
+interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<div class="swiper mySwiper" data-carousel-id={id}>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <Image src={astrojpg} alt="astro" />
+    </div>
+    <div class="swiper-slide">
+      <Image src={thayWalkingMeditation} alt="thay walking meditation" />
+    </div>
+    <div class="swiper-slide">Slide 3</div>
+  </div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <div class="swiper-pagination"></div>
+</div>
+
+<style>
+  .swiper {
+    width: 600px;
+    height: 400px; /* 增加高度以适应竖图 */
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* 添加内边距 */
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: auto; /* 改为 auto */
+    height: auto; /* 改为 auto */
+    max-width: 100%; /* 添加最大宽度限制 */
+    max-height: 100%; /* 添加最大高度限制 */
+    object-fit: contain; /* 保持 contain */
+  }
+</style>
+
+<!-- Initialize Swiper -->
+<script>
+  import Swiper from 'swiper'
+  import { Navigation, Pagination } from 'swiper/modules'
+
+  import 'swiper/css'
+  import 'swiper/css/navigation'
+  import 'swiper/css/pagination'
+
+  // 用于存储所有 Swiper 实例的 Map
+  const swiperInstances = new Map()
+
+  document.addEventListener('astro:page-load', () => {
+    // 获取页面上所有的 Swiper 容器
+    const swiperElements = document.querySelectorAll('.mySwiper')
+
+    swiperElements.forEach((element) => {
+      const carouselId = element.getAttribute('data-carousel-id')
+
+      // 为每个 Swiper 容器创建一个新的实例
+      const swiper = new Swiper(`[data-carousel-id="${carouselId}"]`, {
+        modules: [Navigation, Pagination],
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      })
+
+      // 将实例存储在 Map 中
+      swiperInstances.set(carouselId, swiper)
+      console.log(`Swiper 组件 ${carouselId} 被初始化`)
+    })
+  })
+
+  // 在页面切换前销毁 Swiper 实例
+  document.addEventListener('astro:before-preparation', () => {
+    swiperInstances.forEach((swiper, id) => {
+      if (swiper) {
+        swiper.destroy(true, true) // true, true 参数表示同时删除所有附加的事件监听器和HTML元素
+        console.log(`Swiper 组件 ${id} 被销毁`)
+      }
+    })
+    swiperInstances.clear() // 清空 Map
+  })
+</script>

@@ -15,12 +15,13 @@ interface Props {
 const { id, slides } = Astro.props
 ---
 
-<div class="swiper" data-carousel-id={id}>
+<div class="swiper mt-8" data-carousel-id={id}>
   <div class="swiper-wrapper">
     {
       slides.map((slide) => (
-        <div class="swiper-slide">
+        <div class="swiper-slide flex flex-col items-center justify-center">
           <Image src={slide.src} alt={slide.alt} />
+          <p class="mt-2 pb-4 text-center">{slide.alt}</p>
         </div>
       ))
     }
@@ -37,7 +38,8 @@ const { id, slides } = Astro.props
     // 容器基础样式
     width: 100%;
     max-width: 653.109px;
-    aspect-ratio: 16/10;
+    aspect-ratio: 4/3;
+    height: auto;
 
     // 分页器样式变量
     --swiper-theme-color: #333;
@@ -47,14 +49,13 @@ const { id, slides } = Astro.props
     // 幻灯片样式
     &-slide {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      padding-bottom: 2rem;
 
       img {
         width: auto;
         height: auto;
         max-width: 100%;
-        max-height: 100%;
+        max-height: calc(100% - 2rem);
       }
     }
 
@@ -81,7 +82,7 @@ const { id, slides } = Astro.props
 
     // 平板端响应式样式
     @media (max-width: 768px) {
-      aspect-ratio: 4/3;
+      aspect-ratio: 4/5;
 
       &-button-prev,
       &-button-next {
@@ -121,7 +122,7 @@ const { id, slides } = Astro.props
   // Swiper 配置选项
   const swiperConfig = {
     modules: [Navigation, Pagination, Autoplay],
-    loop: true,
+    // loop: true,
     speed: 800,
 
     // 导航按钮配置
@@ -137,12 +138,12 @@ const { id, slides } = Astro.props
     },
 
     // 自动播放配置
-    autoplay: {
-      delay: 2500,
-      pauseOnTouch: true,
-      pauseOnMouseEnter: true,
-      disableOnInteraction: true,
-    },
+    // autoplay: {
+    //   delay: 2500,
+    //   pauseOnTouch: true,
+    //   pauseOnMouseEnter: true,
+    //   disableOnInteraction: true,
+    // },
   }
 
   // 初始化 Swiper 实例

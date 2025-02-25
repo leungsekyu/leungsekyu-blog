@@ -6,11 +6,18 @@ interface Props {
 const { url } = Astro.props
 ---
 
-<iframe
-  src={`${url}`}
-  title="YouTube video player"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerpolicy="strict-origin-when-cross-origin"
-  allowfullscreen
-  class="h-62 w-full md:h-[450px] md:w-[800px]"></iframe>
+<div class="relative aspect-[4/3] w-full max-w-[653.109px] bg-gray-100 md:aspect-[16/10]">
+  <div class="absolute inset-0 grid place-items-center">
+    <div class="i-logos-youtube text-2xl md:text-4xl"></div>
+  </div>
+
+  <iframe
+    src={`${url}`}
+    title="YouTube video player"
+    frameborder="0"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+    class="absolute inset-0 h-full w-full"></iframe>
+</div>

@@ -1,24 +1,29 @@
 ---
 import { Image } from 'astro:assets'
-import astro from '@assets/astro.jpg'
-import thayWalkingMeditation from '@assets/thay-walking-meditation.webp'
+import type { ImageMetadata } from 'astro'
+
+interface LocalImage {
+  src: ImageMetadata
+  alt: string
+}
 
 interface Props {
   id: string
+  slides: LocalImage[]
 }
 
-const { id } = Astro.props
+const { id, slides } = Astro.props
 ---
 
-<div class="swiper leungsekyu" data-carousel-id={id}>
+<div class="swiper" data-carousel-id={id}>
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <Image src={astro} alt="Astro's hero image." />
-    </div>
-    <div class="swiper-slide">
-      <Image src={thayWalkingMeditation} alt="Thay's leading a walking meditation." />
-    </div>
-    <div class="swiper-slide">Slide 3 Slide 3 Slide 3 Slide 3</div>
+    {
+      slides.map((slide) => (
+        <div class="swiper-slide">
+          <Image src={slide.src} alt={slide.alt} />
+        </div>
+      ))
+    }
   </div>
 
   <div class="swiper-button-prev"></div>
@@ -29,15 +34,52 @@ const { id } = Astro.props
 
 <style lang="scss">
   .swiper {
+    // 容器基础样式
+    width: 100%;
+    max-width: 653.109px;
+    aspect-ratio: 16/10;
+
+    // 分页器样式变量
     --swiper-theme-color: #333;
     --swiper-pagination-bullet-inactive-color: #999;
     --swiper-pagination-bullet-inactive-opacity: 0.8;
 
-    width: 100%;
-    max-width: 653.109px;
-    height: auto;
-    aspect-ratio: 16/10;
+    // 幻灯片样式
+    &-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
+      img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    // 导航按钮样式（桌面端）
+    &-button-prev,
+    &-button-next {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+
+      &::after {
+        font-size: 16px;
+        color: #333;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    // 平板端响应式样式
     @media (max-width: 768px) {
       aspect-ratio: 4/3;
 
@@ -52,107 +94,83 @@ const { id } = Astro.props
       }
     }
 
+    // 移动端响应式样式
     @media (max-width: 480px) {
-      aspect-ratio: 4/3;
-
       .swiper-button-prev,
       .swiper-button-next {
         display: none; // 移动端隐藏箭头
-      }
-    }
-
-    &-slide {
-      background: transparent;
-      font-size: 18px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: auto;
-        height: auto;
-        max-width: 100%;
-        max-height: 100%;
-      }
-    }
-
-    &-button-prev,
-    &-button-next {
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-
-      &::after {
-        font-size: 16px;
-        color: #333;
-      }
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 1);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
       }
     }
   }
 </style>
 
 <script>
+  // 导入必要的模块和样式
   import Swiper from 'swiper'
   import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
+  // 导入 Swiper 样式
   import 'swiper/css'
   import 'swiper/css/navigation'
   import 'swiper/css/pagination'
   import 'swiper/css/autoplay'
 
+  // 存储所有 Swiper 实例
   const swiperInstances = new Map()
 
+  // Swiper 配置选项
+  const swiperConfig = {
+    modules: [Navigation, Pagination, Autoplay],
+    loop: true,
+    speed: 800,
+
+    // 导航按钮配置
+    navigation: {
+      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next',
+    },
+
+    // 分页器配置
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+    // 自动播放配置
+    autoplay: {
+      delay: 2500,
+      pauseOnTouch: true,
+      pauseOnMouseEnter: true,
+      disableOnInteraction: true,
+    },
+  }
+
+  // 初始化 Swiper 实例
+  function initializeSwiper(element: Element) {
+    const carouselId = element.getAttribute('data-carousel-id')
+    const swiper = new Swiper(`[data-carousel-id="${carouselId}"]`, swiperConfig)
+
+    swiperInstances.set(carouselId, swiper)
+    console.log(`Swiper 组件 ${carouselId} 被初始化`)
+  }
+
+  // 销毁 Swiper 实例
+  function destroySwiper(swiper: Swiper, id: string) {
+    if (swiper) {
+      swiper.destroy(true, true)
+      console.log(`Swiper 组件 ${id} 被销毁`)
+    }
+  }
+
+  // 页面加载时初始化所有 Swiper
   document.addEventListener('astro:page-load', () => {
-    // 获取页面上所有的 Swiper 容器
     const swiperElements = document.querySelectorAll('.swiper')
-
-    swiperElements.forEach((element) => {
-      const carouselId = element.getAttribute('data-carousel-id')
-
-      // 为每个 Swiper 容器创建一个新的实例
-      const swiper = new Swiper(`[data-carousel-id="${carouselId}"]`, {
-        modules: [Navigation, Pagination, Autoplay],
-        loop: true,
-        slidesPerView: 1, // 同时只显示一张图片
-        speed: 800,
-        effect: 'slide', // 明确使用滑动效果
-        centeredSlides: false, // 改为 false，让图片对齐容器边缘
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      })
-
-      // 将实例存储在 Map 中
-      swiperInstances.set(carouselId, swiper)
-      console.log(`Swiper 组件 ${carouselId} 被初始化`)
-    })
+    swiperElements.forEach(initializeSwiper)
   })
 
-  // 在页面切换前销毁 Swiper 实例
+  // 页面切换前清理所有 Swiper 实例
   document.addEventListener('astro:before-preparation', () => {
-    swiperInstances.forEach((swiper, id) => {
-      if (swiper) {
-        swiper.destroy(true, true) // true, true 参数表示同时删除所有附加的事件监听器和HTML元素
-        console.log(`Swiper 组件 ${id} 被销毁`)
-      }
-    })
-    swiperInstances.clear() // 清空 Map
+    swiperInstances.forEach(destroySwiper)
+    swiperInstances.clear()
   })
 </script>

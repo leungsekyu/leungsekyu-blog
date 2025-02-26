@@ -9,7 +9,14 @@ interface BookmarkGroups {
   [key: string]: Bookmark[]
 }
 
+const stocks = ['中国石油', '唯科科技', '汇川技术', '艾力斯', '领益智造', '晶晨股份']
+
 export const bookmarks: BookmarkGroups = {
+  同花顺: stocks.map((stock) => ({
+    site: `https://www.iwencai.com/unifiedwap/result?w=${stock}`,
+    name: stock,
+  })),
+
   leungsekyu: [
     {
       site: 'https://github.com/leungsekyu/leungsekyu-blog',
@@ -36,6 +43,10 @@ export const bookmarks: BookmarkGroups = {
       site: 'https://mobbin.com/',
       name: 'Mobbin',
     },
+    {
+      site: 'https://www.youtube.com/watch?v=PUv66718DII',
+      name: 'Bret Victor - Inventing on Principle',
+    },
   ],
 
   图标: [
@@ -45,6 +56,7 @@ export const bookmarks: BookmarkGroups = {
       favicon: '/icons/bookmarks/icônes.svg',
     },
   ],
+
   英文: [
     {
       site: 'https://oalecd10.cp.com.cn/',
@@ -52,6 +64,8 @@ export const bookmarks: BookmarkGroups = {
       favicon: 'https://osstp.cp.com.cn/oxfordx_web/logo.png',
     },
   ],
+
+  Swift: [],
 
   Sui: [
     {
@@ -134,6 +148,11 @@ export const bookmarks: BookmarkGroups = {
 
   'Open Graph': [
     {
+      site: 'https://juejin.cn/post/6977635841262747662',
+      name: '微信分享链接如何定制缩略图和标题',
+      favicon: 'https://lf-web-assets.juejin.cn/obj/juejin-web/xitu_juejin_web/static/favicons/favicon-32x32.png',
+    },
+    {
       site: 'https://liruifengv.com/posts/astro-auto-gen-og-image/',
       name: 'Astro 自动生成 Open Graph & Twitter card 图片😄',
       tags: ['TODO'],
@@ -169,10 +188,33 @@ export const bookmarks: BookmarkGroups = {
     },
   ],
 
-  Swift: [
+  Web: [
     {
-      site: 'https://www.youtube.com/watch?v=PUv66718DII',
-      name: 'Bret Victor - Inventing on Principle',
+      site: 'https://juejin.cn/post/6844903783630127111',
+      name: '我如何零基础转行成为一个自信的前端',
+      favicon: 'https://lf-web-assets.juejin.cn/obj/juejin-web/xitu_juejin_web/static/favicons/favicon-32x32.png',
+    },
+  ],
+
+  CSS: [
+    {
+      site: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/place-items',
+      name: 'place-items',
+    },
+    {
+      site: 'https://css-tricks.com/almanac/properties/p/position/',
+      name: 'position',
+    },
+    {
+      site: 'https://css-tricks.com/7-practical-uses-for-the-before-and-after-pseudo-elements-in-css/',
+      name: '7 Practical Uses for the ::before and ::after Pseudo-Elements in CSS',
+    },
+  ],
+
+  API: [
+    {
+      site: 'https://mockapi.io/',
+      name: 'mockAPI',
     },
   ],
 }

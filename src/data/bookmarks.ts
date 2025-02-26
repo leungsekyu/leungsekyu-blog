@@ -46,18 +46,6 @@ export const bookmarks: BookmarkGroups = {
     },
   ],
   英文: [
-    // {
-    //   site: 'https://www.bilibili.com/video/BV1n54y1B7bE/?share_source=copy_web&vd_source=279f325186e163118a21a7c98df7f2a1',
-    //   name: '【初阶篇】美式英语发音教程',
-    // },
-    // {
-    //   site: 'https://www.bilibili.com/video/BV1Xr4y1N76H/?share_source=copy_web&vd_source=279f325186e163118a21a7c98df7f2a1',
-    //   name: '【中阶篇】美式英语发音教程',
-    // },
-    // {
-    //   site: 'https://www.bilibili.com/video/BV1Qy4y1H7K2/?share_source=copy_web&vd_source=279f325186e163118a21a7c98df7f2a1',
-    //   name: '【高阶篇】美式英语发音教程',
-    // },
     {
       site: 'https://oalecd10.cp.com.cn/',
       name: '牛津高阶英汉双解词典（第10版）',
@@ -168,6 +156,16 @@ export const bookmarks: BookmarkGroups = {
       site: 'https://github.com/yuaotian/go-cursor-help/blob/master/README_CN.md',
       name: 'Cursor 免费试用重置工具',
       tags: ['Cursor'],
+    },
+    {
+      site: 'https://www.pexels.com/zh-cn/',
+      name: 'Pexels',
+      tags: ['素材图片'],
+    },
+    {
+      site: 'https://pixabay.com/zh/',
+      name: 'Pixabay',
+      tags: ['素材图片'],
     },
   ],
 }

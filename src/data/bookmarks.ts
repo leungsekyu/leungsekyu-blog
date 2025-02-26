@@ -168,4 +168,11 @@ export const bookmarks: BookmarkGroups = {
       tags: ['素材图片'],
     },
   ],
+
+  Swift: [
+    {
+      site: 'https://www.youtube.com/watch?v=PUv66718DII',
+      name: 'Bret Victor - Inventing on Principle',
+    },
+  ],
 }

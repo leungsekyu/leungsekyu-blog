@@ -12,10 +12,16 @@ interface BookmarkGroups {
 const stocks = ['中国石油', '唯科科技', '汇川技术', '艾力斯', '领益智造', '晶晨股份']
 
 export const bookmarks: BookmarkGroups = {
-  同花顺: stocks.map((stock) => ({
-    site: `https://www.iwencai.com/unifiedwap/result?w=${stock}`,
-    name: stock,
-  })),
+  同花顺: [
+    {
+      site: 'https://www.aicoin.com/zh-Hans/article/381100',
+      name: '经典重读丨Continue Capital匹马《致军班书》：投资秘诀无他，唯躬亲钻研尔',
+    },
+    ...stocks.map((stock) => ({
+      site: `https://www.iwencai.com/unifiedwap/result?w=${stock}`,
+      name: stock,
+    })),
+  ],
 
   leungsekyu: [
     {
@@ -194,6 +200,10 @@ export const bookmarks: BookmarkGroups = {
       name: '我如何零基础转行成为一个自信的前端',
       favicon: 'https://lf-web-assets.juejin.cn/obj/juejin-web/xitu_juejin_web/static/favicons/favicon-32x32.png',
     },
+    {
+      site: 'https://www.youtube.com/watch?v=o2T8259HCfU',
+      name: '程序员找国外远程工作资源网站分享 脱离卷的环境',
+    },
   ],
 
   CSS: [
@@ -215,6 +225,20 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://mockapi.io/',
       name: 'mockAPI',
+    },
+  ],
+
+  'Mac Apps': [
+    {
+      site: 'https://www.minorpatch.com/apps/cleanshot-x.html',
+      name: 'CleanShot X',
+    },
+  ],
+
+  Inspiration: [
+    {
+      site: 'https://mp.weixin.qq.com/s/Cajwfve7f-z2Blk9lnD0hA',
+      name: '疯狂的幻方：一家隐形AI巨头的大模型之路',
     },
   ],
 }

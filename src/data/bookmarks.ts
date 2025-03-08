@@ -55,6 +55,7 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://www.youtube.com/watch?v=PUv66718DII',
       name: 'Bret Victor - Inventing on Principle',
+      favicon: '/icons/bookmarks/youtube.ico',
     },
   ],
 
@@ -188,6 +189,11 @@ export const bookmarks: BookmarkGroups = {
       favicon: '/icons/bookmarks/astro.svg',
     },
     {
+      site: 'https://docs.astro.build/zh-cn/guides/images/#%E5%86%85%E5%AE%B9%E9%9B%86%E5%90%88%E4%B8%AD%E7%9A%84%E5%9B%BE%E5%83%8F',
+      name: '内容集合中的图像',
+      favicon: '/icons/bookmarks/astro.svg',
+    },
+    {
       site: 'https://github.com/eliancodes/brutal',
       name: 'Brutal',
     },
@@ -271,6 +277,7 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://www.youtube.com/watch?v=o2T8259HCfU',
       name: '程序员找国外远程工作资源网站分享 脱离卷的环境',
+      favicon: '/icons/bookmarks/youtube.ico',
     },
   ],
 

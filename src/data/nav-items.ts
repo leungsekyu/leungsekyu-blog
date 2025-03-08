@@ -7,6 +7,7 @@ export const navItems: NavItem[] = [
   { name: '主页', url: '/' },
   // { name: '禅', url: '/zen/' },
   { name: '博客', url: '/blog/' },
+  { name: '个人', url: '/personal/' },
   { name: '书签', url: '/bookmarks/' },
 ]
 

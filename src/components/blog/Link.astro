@@ -1,4 +1,6 @@
 ---
+import { getFaviconUrl } from '@data/favicons'
+
 interface Props {
   site: string
   name: string
@@ -8,8 +10,7 @@ interface Props {
 
 const { site, name, favicon, first = false } = Astro.props
 
-const url = new URL(site)
-const iconUrl = favicon || `${url.protocol}//${url.hostname}/favicon.ico`
+const iconUrl = getFaviconUrl(site, favicon)
 ---
 
 <div class={`inline-block rounded-lg border border-black px-2 py-1 ${!first ? 'mt-3' : 'mt-5'}`}>

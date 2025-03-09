@@ -1,4 +1,6 @@
 ---
+import { getFaviconUrl } from '@data/favicons'
+
 interface Props {
   site: string
   name: string
@@ -8,8 +10,7 @@ interface Props {
 
 const { site, name, tags = [], favicon } = Astro.props
 
-const url = new URL(site)
-const iconUrl = favicon || `${url.protocol}//${url.hostname}/favicon.ico`
+const iconUrl = getFaviconUrl(site, favicon)
 ---
 
 <div class="bookmark-item">

@@ -55,7 +55,6 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://www.youtube.com/watch?v=PUv66718DII',
       name: 'Bret Victor - Inventing on Principle',
-      favicon: '/icons/bookmarks/youtube.ico',
     },
   ],
 
@@ -155,43 +154,35 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://docs.astro.build/zh-cn/getting-started/',
       name: 'Astro 文档',
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://docs.astro.build/zh-cn/recipes/external-links/',
       name: '为链接添加图标',
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://docs.astro.build/zh-cn/guides/view-transitions/',
       name: '视图过渡动画',
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://docs.astro.build/zh-cn/recipes/i18n/',
       name: '添加 i18n 功能',
       tags: ['TODO'],
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://docs.astro.build/zh-cn/reference/directives-reference/#sethtml',
       name: '模板指令参考 → set:html',
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://docs.astro.build/zh-cn/reference/modules/astro-assets/#image-%E5%B1%9E%E6%80%A7',
       name: 'Image 属性',
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://docs.astro.build/zh-cn/recipes/docker/',
       name: '用 Docker 来构建你的 Astro 网站',
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://docs.astro.build/zh-cn/guides/images/#%E5%86%85%E5%AE%B9%E9%9B%86%E5%90%88%E4%B8%AD%E7%9A%84%E5%9B%BE%E5%83%8F',
       name: '内容集合中的图像',
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://github.com/eliancodes/brutal',
@@ -242,7 +233,6 @@ export const bookmarks: BookmarkGroups = {
       site: 'https://liruifengv.com/posts/astro-auto-gen-og-image/',
       name: 'Astro 自动生成 Open Graph & Twitter card 图片😄',
       tags: ['TODO'],
-      favicon: '/icons/bookmarks/astro.svg',
     },
     {
       site: 'https://www.opengraph.xyz/',
@@ -277,7 +267,6 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://www.youtube.com/watch?v=o2T8259HCfU',
       name: '程序员找国外远程工作资源网站分享 脱离卷的环境',
-      favicon: '/icons/bookmarks/youtube.ico',
     },
   ],
 

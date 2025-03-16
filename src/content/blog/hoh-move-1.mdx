@@ -3,7 +3,7 @@ title: 学习笔记 | Move 共学营 2025 01
 description: Sui Move 共学笔记
 author: leungsekyu
 publishedAt: 2025-03-05 07:07
-updatedAt: 2025-03-09 21:16
+updatedAt: 2025-03-16 17:29
 tags:
   - HOH
   - Move 共学营
@@ -43,3 +43,34 @@ import Bilibili from '@components/blog/Bilibili.astro'
 ```zsh
 brew upgrade sui
 ```
+
+## Move
+
+- 面向资产编程的特定编程语言 → 智能合约编程语言
+
+> 智能：人工无法干预  
+> 合约：不能违反规则  
+> 智能合约：无法人为干预的自动运行的规则
+
+### 1. 定义资产
+
+- 定义 TOKEN（代币）
+- 定义 NFT
+
+### 2. 操作资产
+
+- 增（create）
+- 删（delete）
+- 改（update）
+- 查（read）
+
+### 3. 权限控制（重要）
+
+- 限制访问
+- 限制转移权限
+
+### 和其他编程语言的不同
+
+- 每一次运行程序都是一个完整的**事务** → 事务：要么全部成功，要么全部失败（自动回滚）
+- 不需要人工考虑并发执行资源的处理，（**Move 跟链结合起来**之后）底层会自动处理并发资源的排序
+- Move 依赖于链来运行，Move 和 Sui 链的结合屏蔽了数据库的概念（**链相当于数据库**），Move 相当于 SQL（结构化查询语言）

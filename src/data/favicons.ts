@@ -12,6 +12,7 @@ const favicons: Favicons = {
   liruifengv: astroIcon,
   undraw: '/icons/bookmarks/undraw.ico',
   storytale: '/icons/bookmarks/storytale.ico',
+  neomusicschool: '/icons/bookmarks/neomusicschool.png',
 }
 
 function extractHostname(hostname: string): string {

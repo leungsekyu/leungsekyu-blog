@@ -3,7 +3,7 @@ title: hea 下专区 | 音乐
 description: 弹下吉他，听下音乐
 author: leungsekyu
 publishedAt: 2025-02-21 03:41
-updatedAt: 2025-03-09 21:16
+updatedAt: 2025-03-16 17:29
 tags:
   - 放松
   - 音乐
@@ -38,9 +38,32 @@ import YouTube from '@components/blog/YouTube.astro'
   first={true}
 />
 
-- [x] 12 频率、频段、⾳⾼、⾳名（他们之间到底有什么关系？）
+<Link
+  site="https://neomusicschool.com/p/t_pc/course_pc_detail/video/v_61ea5340e4b02b825845759a?product_id=p_619b6476e4b0c005c992b5ff&content_app_id=&type=6"
+  name="12 频率、频段、⾳⾼、⾳名（他们之间到底有什么关系？）"
+/>
 
-标准音：A = 440 Hz（一弦五品）
+```mermaid
+graph LR
+    A[Frequency] --> B[Frequency Band]
+    A --> C[Pitch]
+    A --> D[Note Name]
+    B --> E[Low Frequency: < 200 Hz]
+    B --> F[Medium Low Frequency: 200 - 500 Hz]
+    B --> G[Medium Frequency: 500 - 1500 Hz]
+    B --> H[Medium High Frequency: 1500 - 7000 Hz]
+    B --> I[High Frequency: > 7000 Hz]
+    C --> J[the **perceived** highness or lowness of a sound]
+    D --> K[C4: 261.63 Hz]
+    D --> L["A4: 440 Hz (1st string, 5th fret)"]
+```
+
+- 频率翻倍 → 音高高一个八度
+
+<Link
+  site="https://neomusicschool.com/p/t_pc/course_pc_detail/video/v_61ea533de4b02b8258457597?product_id=p_619b6476e4b0c005c992b5ff&content_app_id=&type=6"
+  name="13 ⼗⼆平均律（玩音乐玩的就是这几个音）"
+/>
 
 ### 吉他谱
 

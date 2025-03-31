@@ -13,6 +13,7 @@ const favicons: Favicons = {
   undraw: '/icons/bookmarks/undraw.ico',
   storytale: '/icons/bookmarks/storytale.ico',
   neomusicschool: '/icons/bookmarks/neomusicschool.png',
+  rightshop: '/icons/bookmarks/rightshop.png',
 }
 
 function extractHostname(hostname: string): string {

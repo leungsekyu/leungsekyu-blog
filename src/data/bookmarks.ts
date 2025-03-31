@@ -259,7 +259,6 @@ export const bookmarks: BookmarkGroups = {
     {
       site: 'https://rightshop.xyz/buy/57',
       name: 'Github 学生包 (二手)',
-      favicon: 'https://rightshop.xyz/uploads/images/1722582688462.png',
     },
   ],
 
